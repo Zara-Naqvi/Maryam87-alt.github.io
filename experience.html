@@ -18,7 +18,7 @@
 
         /* CSS Keyframes for the Subtle Container Glow */
         @keyframes subtleGlow {
-            0% { box-shadow: 0 0 10px rgba(70, 70, 70, 0.2); } /* Adjusted shadow color for dark background */
+            0% { box-shadow: 0 0 10px rgba(70, 70, 70, 0.2); }
             50% { box-shadow: 0 0 20px rgba(70, 70, 70, 0.4); }
             100% { box-shadow: 0 0 10px rgba(70, 70, 70, 0.2); }
         }
@@ -28,9 +28,7 @@
             font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 0;
-            /* CHANGE 1: Dark Grey Background */
             background-color: #333; 
-            /* CHANGE 2: Light Text Color for contrast */
             color: #eee;
             line-height: 1.6;
             display: flex;
@@ -49,7 +47,7 @@
             opacity: 0;
         }
 
-        /* --- TOP NAVIGATION BAR STYLING (NEW) --- */
+        /* --- TOP NAVIGATION BAR STYLING --- */
         .nav-buttons-grid {
             display: flex;
             justify-content: center;
@@ -64,7 +62,6 @@
             flex-basis: auto; 
             display: block;
             padding: 15px 30px;
-            /* CHANGE 3: Navigation button base style */
             background-color: #555;
             color: #f0f0f0;
             text-decoration: none;
@@ -79,7 +76,6 @@
         }
 
         .nav-link:hover {
-            /* CHANGE 4: Navigation button hover style */
             background: linear-gradient(to top, #666666, #777777);
             color: #fff;
             transform: translateY(-2px) scale(1.02);
@@ -105,7 +101,6 @@
         .main-title {
             font-family: 'Playfair Display', serif;
             font-size: 4em; 
-            /* CHANGE 5: Title color (light grey) */
             color: #cccccc;
             line-height: 1.1;
             margin: 20px 0 10px 0;
@@ -125,7 +120,6 @@
         .play-icon {
             width: 35px;
             height: 35px;
-            /* CHANGE 6: Icon fill color */
             fill: #aaa;
             transition: fill 0.2s;
             position: absolute;
@@ -134,12 +128,11 @@
         .play-line {
             width: 80px;
             height: 2px;
-            /* CHANGE 7: Play line color */
             background-color: #aaa;
             margin-left: 10px;
             transform: translateX(20px);
         }
-        .play-button-container.playing .play-icon { fill: #ff6b6b; } /* Slightly brighter red for dark theme */
+        .play-button-container.playing .play-icon { fill: #ff6b6b; } 
 
 
         /* Right Header Image */
@@ -152,25 +145,17 @@
             height: auto;
             border-radius: 20px;
             object-fit: cover;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35); /* Increased shadow contrast */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
         }
         
-        /* SECOND IMAGE BELOW THE FIRST SECTION */
+        /* ************ REMOVED IMAGE STYLE ************ */
         .sub-section-image {
-            width: 95%;
-            max-width: 700px;
-            height: auto;
-            border-radius: 20px;
-            object-fit: cover;
-            margin: 30px auto;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35); 
-            display: block; 
+            display: none; /* Removed the image */
         }
 
 
-        /* --- Content Box Styling (REDUCED WIDTH) --- */
+        /* --- Content Box Styling (Experience Cards) --- */
         .content-box {
-            /* CHANGE 8: Content Box background (slightly lighter than body) */
             background-color: #444; 
             width: 95%; 
             max-width: 700px; 
@@ -192,7 +177,6 @@
         .content-box p, .content-box ul {
             font-size: 1.0em;
             line-height: 1.7;
-            /* CHANGE 9: Paragraph text color */
             color: #f0f0f0;
             margin-bottom: 20px;
         }
@@ -201,7 +185,6 @@
             font-family: 'Playfair Display', serif;
             font-weight: 700;
             font-size: 1.8em;
-            /* CHANGE 10: H3 color */
             color: #e0e0e0;
             line-height: 1.2;
             margin-top: 0;
@@ -212,7 +195,6 @@
             font-family: 'Montserrat', sans-serif;
             font-weight: 600;
             font-size: 1.1em;
-            /* CHANGE 11: Job title color */
             color: #bbb;
             margin-top: 0;
             margin-bottom: 20px;
@@ -224,7 +206,6 @@
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
             font-size: 1.2em;
-            /* CHANGE 12: H4 color */
             color: #e0e0e0;
             margin-top: 30px;
             margin-bottom: 10px;
@@ -244,7 +225,6 @@
             content: '–'; 
             position: absolute;
             left: 0;
-            /* CHANGE 13: List bullet color */
             color: #bbb;
             font-weight: bold;
         }
@@ -350,9 +330,6 @@
             </ul>
         </section>
 
-        <img src="paragraph7.jpg" onerror="this.onerror=null; this.src='https://placehold.co/700x400/a0a0a0/333?text=PSCA+Image+7';" alt="Punjab Safe Cities Authority Image" class="sub-section-image">
-
-
         <section class="content-box" id="work-text-psca">
             <h3>Punjab Safe Cities Authority (Lahore)</h3>
             <span class="job-title">Deputy Executive Officer (Systems Administration) | Jan 2020 – Jan 2022</span>
@@ -441,7 +418,7 @@
             let maleVoice = voices.find(voice => 
                 voice.name.includes('Male') || 
                 voice.name.includes('David') || 
-                voice.default && voice.lang.includes('en')
+                (voice.default && voice.lang.includes('en'))
             );
 
             if (maleVoice) {

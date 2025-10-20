@@ -30,36 +30,30 @@
             font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #e0e0e0; /* Light grey background */
+            background-color: #e0e0e0;
             color: #333;
             line-height: 1.6;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            overflow-x: hidden; /* Prevent horizontal scroll on mobile */
+            overflow-x: hidden;
         }
 
         .main-wrapper {
             width: 90%;
-            max-width: 1200px;
+            max-width: 1000px;
             display: flex;
-            justify-content: center;
-            align-items: flex-start;
+            flex-direction: column;
+            align-items: center;
             padding: 50px 0;
             
-            /* Apply the magical effect to the main container */
+            /* Apply the magical effect */
             animation: pageLoadFade 2s ease-out forwards;
             opacity: 0;
         }
 
-        /* Main Content Area (Title and Certification List) */
-        .content-area {
-            flex-grow: 1;
-            padding-right: 40px;
-            text-align: center;
-        }
-
+        /* --- Title Styling --- */
         .main-title {
             font-family: 'Playfair Display', serif;
             font-size: 4em; 
@@ -68,18 +62,20 @@
             margin-bottom: 50px;
             font-weight: 700;
             text-transform: uppercase;
+            text-align: center;
         }
 
-        /* Certification List Box (Large, Rounded Grey) */
+        /* --- Certification List Box (Adjusted Width) --- */
         .cert-box {
-            background-color: #cccccc; /* Light grey box */
-            width: 100%;
-            max-width: 750px;
+            background-color: #cccccc; 
+            /* Set max-width to match the visual size of the homepage paragraph box */
+            width: 90%; 
+            max-width: 650px; /* Reduced from 750px to match homepage intro width */
             margin: 0 auto;
             padding: 40px 60px;
-            border-radius: 40px; /* Highly rounded corners */
+            border-radius: 40px; 
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            animation: subtleGlow 4s infinite alternate 2s; /* Subtle glow */
+            animation: subtleGlow 4s infinite alternate 2s;
             text-align: left;
         }
 
@@ -89,57 +85,29 @@
             margin: 0;
         }
 
-        /* Styling for the list of items */
         .cert-box ul li {
             font-size: 1.1em;
             font-weight: 600;
             color: #1a1a1a;
             margin-bottom: 20px;
-            text-indent: -1.5em; /* Create hanging indentation */
+            text-indent: -1.5em; 
             padding-left: 1.5em;
         }
 
         .cert-box ul li:before {
-            content: '• '; /* Custom bullet point */
+            content: '• '; 
             color: #444;
             font-size: 1.2em;
             line-height: 1;
         }
         
-        /* Navigation Bar (Vertical on the right) */
-        .nav-bar {
-            width: 180px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .nav-link {
-            display: block;
-            padding: 15px 10px;
-            background-color: #a0a0a0; /* Matching button grey */
-            color: #1a1a1a;
-            text-decoration: none;
-            border-radius: 50px 0 0 50px; /* Rounded only on the left side */
-            font-weight: 600;
-            font-size: 0.9em;
-            text-align: right;
-            text-transform: uppercase;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-
-        .nav-link:hover {
-            background-color: #888888;
-            color: #fff;
-            transform: translateX(-5px);
-        }
-
-        /* Home Button (Separate, centered at the bottom) */
+        /* --- NAVIGATION STYLING --- */
+        
+        /* Home Button (The large, central one) */
         .home-button-container {
-            width: 100%;
             text-align: center;
             margin-top: 50px;
+            margin-bottom: 30px; 
         }
 
         .home-button {
@@ -148,56 +116,79 @@
             background-color: #777777; 
             color: #fff;
             text-decoration: none;
+            
+            /* Enhanced Styling */
             border-radius: 50px;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 1em;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
             text-transform: uppercase;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            border: 1px solid #555;
         }
 
         .home-button:hover {
             background-color: #555555;
-            transform: translateY(-2px);
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Horizontal Navigation Buttons */
+        .nav-buttons-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap; 
+            gap: 20px;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .nav-link {
+            flex-basis: auto; 
+            display: block;
+            padding: 15px 30px;
+            background-color: #a0a0a0;
+            color: #1a1a1a;
+            text-decoration: none;
+            
+            /* Enhanced Styling */
+            border-radius: 50px; 
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            border: 1px solid #999;
+            
+            font-weight: 600;
+            font-size: 0.9em;
+            text-align: center;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: linear-gradient(to top, #888888, #b0b0b0);
+            color: #fff;
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
         }
 
         /* Responsive Adjustments */
-        @media (max-width: 900px) {
-            .main-wrapper { 
-                flex-direction: column;
-                align-items: center;
-                padding: 30px 0;
-            }
-            .content-area {
-                padding-right: 0;
-                margin-bottom: 30px;
-            }
+        @media (max-width: 768px) {
             .main-title {
                 font-size: 3em;
-                margin-bottom: 30px;
             }
             .cert-box {
-                padding: 30px 40px;
+                padding: 30px 20px;
                 border-radius: 20px;
+                max-width: 90%; /* Ensure it's fluid on mobile */
             }
-            .nav-bar {
-                width: 90%;
-                max-width: 500px;
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: center;
+            .cert-box ul li {
+                font-size: 1em;
+                margin-bottom: 15px;
+            }
+            .nav-buttons-grid {
+                gap: 15px;
             }
             .nav-link {
-                width: 45%; /* Two buttons per row */
-                text-align: center;
-                border-radius: 50px; /* Full rounded on mobile */
-                transform: none !important;
-            }
-            .nav-link:hover {
-                transform: none;
-            }
-            .home-button-container {
-                margin-top: 30px;
+                padding: 12px 20px;
             }
         }
     </style>
@@ -205,37 +196,33 @@
 <body>
     <div class="main-wrapper">
         
-        <div class="content-area">
-            
-            <header>
-                <h1 class="main-title">Certifications &<br>Trainings</h1>
-            </header>
+        <header>
+            <h1 class="main-title">Certifications &<br>Trainings</h1>
+        </header>
 
-            <section class="cert-box">
-                <ul>
-                    <li>PRINCE2 Foundation and Practitioner</li>
-                    <li>EC-Council Certified Ethical Hacker & EC-Council Network Security Administrator & CISMP</li>
-                    <li>RedHat Certified System Administrator (RHCSA)</li>
-                    <li>CompTIA A+ & CompTIA Security+</li>
-                    <li>Microsoft Certified System Associate (MCSA) & Microsoft Certified System Engineer (MCSE)</li>
-                    <li>Azure Fundamentals (AZ-900) & Certified Azure Administrator (AZ-104)</li>
-                    <li>CISCO Certified Network Associate (R&S, Sec, Datacenter)</li>
-                    <li>ITIL Foundation v3</li>
-                </ul>
-            </section>
-            
-            <div class="home-button-container">
-                <a href="index.html" class="home-button">Home</a>
-            </div>
-
+        <section class="cert-box">
+            <ul>
+                <li>PRINCE2 Foundation and Practitioner</li>
+                <li>EC-Council Certified Ethical Hacker & EC-Council Network Security Administrator & CISMP</li>
+                <li>RedHat Certified System Administrator (RHCSA)</li>
+                <li>CompTIA A+ & CompTIA Security+</li>
+                <li>Microsoft Certified System Associate (MCSA) & Microsoft Certified System Engineer (MCSE)</li>
+                <li>Azure Fundamentals (AZ-900) & Certified Azure Administrator (AZ-104)</li>
+                <li>CISCO Certified Network Associate (R&S, Sec, Datacenter)</li>
+                <li>ITIL Foundation v3</li>
+            </ul>
+        </section>
+        
+        <!-- Home Button (Centered and separate) -->
+        <div class="home-button-container">
+            <a href="index.html" class="home-button">Home</a>
         </div>
 
-        <!-- Vertical Navigation Bar (Right Side) -->
-        <nav class="nav-bar">
+        <!-- Horizontal Navigation Buttons - REARRANGED as per design -->
+        <nav class="nav-buttons-grid">
             <a href="skills.html" class="nav-link">KEY SKILLS & TRAINING</a>
-            <!-- Current page is certifications.html -->
-            <a href="experience.html" class="nav-link">WORK EXPERIENCE</a>
             <a href="education.html" class="nav-link">EDUCATION</a>
+            <a href="experience.html" class="nav-link">WORK EXPERIENCE</a>
             <a href="contact.html" class="nav-link">CONTACT ME</a>
         </nav>
 

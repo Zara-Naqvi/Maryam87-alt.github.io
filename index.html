@@ -10,7 +10,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 
     <style>
-        /* Keyframe for the subtle background glow/pulse - Adjusted color to light grey/white */
+        /* CSS Keyframes for Page Load Effect: Blur-to-HD, slow motion (2 seconds) */
+        @keyframes pageLoadFade {
+            0% { opacity: 0; filter: blur(5px); transform: scale(0.98); }
+            100% { opacity: 1; filter: blur(0); transform: scale(1); }
+        }
+
+        /* CSS Keyframes for the Subtle Container Glow (Magical Effect) */
         @keyframes subtleGlow {
             0% { box-shadow: 0 0 10px rgba(180, 180, 180, 0.2); }
             50% { box-shadow: 0 0 20px rgba(180, 180, 180, 0.4); }
@@ -22,7 +28,6 @@
             font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 0;
-            /* Using a simple solid grey background close to your design */
             background-color: #e0e0e0;
             color: #333;
             line-height: 1.6;
@@ -35,13 +40,18 @@
         .container {
             width: 90%;
             max-width: 800px;
-            background-color: #f8f8f8; /* Lighter inner panel */
+            background-color: #f8f8f8;
             padding: 30px;
             border-radius: 15px;
-            /* Applying the magical glow effect - subtle grey pulse */
+            
+            /* Apply the two magical effects */
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            animation: subtleGlow 4s infinite alternate;
+            animation: 
+                pageLoadFade 2s ease-out forwards, /* Blur-to-HD effect */
+                subtleGlow 4s infinite alternate 2s; /* Subtle grey pulse starts after load */
+            
             text-align: center;
+            opacity: 0; /* Start invisible for the pageLoadFade effect */
         }
 
         /* Header and Hero Section */
@@ -75,7 +85,7 @@
         .play-icon {
             width: 35px;
             height: 35px;
-            fill: #555; /* Darker grey icon */
+            fill: #555;
             transition: fill 0.2s;
             position: absolute;
             left: 0;
@@ -84,12 +94,12 @@
         .play-line {
             width: 80px;
             height: 2px;
-            background-color: #555; /* Darker grey line */
+            background-color: #555;
             margin-left: 10px;
             transform: translateX(20px);
         }
         
-        .play-button-container.playing .play-icon { fill: #dc3545; } /* Retained red for 'speaking' state */
+        .play-button-container.playing .play-icon { fill: #dc3545; }
 
         .profile-pic {
             width: 150px;
@@ -97,7 +107,6 @@
             border-radius: 50%;
             object-fit: cover;
             border: 5px solid #fff;
-            /* Subtler grey glow on image */
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); 
         }
 
@@ -112,7 +121,7 @@
 
         /* About Me Section - Highlighted Box */
         .about-me-section {
-            background-color: #cccccc; /* Grey color matching the design */
+            background-color: #cccccc;
             padding: 30px 40px;
             border-radius: 10px;
             margin-bottom: 50px;
@@ -142,7 +151,7 @@
             bottom: -10px;
             width: 60px;
             height: 2px;
-            background-color: #555; /* Darker grey line */
+            background-color: #555;
         }
 
         .nav-buttons {
@@ -155,7 +164,7 @@
         .nav-button {
             display: block;
             padding: 15px 10px;
-            background-color: #a0a0a0; /* Standard button grey */
+            background-color: #a0a0a0;
             color: #1a1a1a;
             text-decoration: none;
             border-radius: 50px;
@@ -167,7 +176,7 @@
         }
 
         .nav-button:hover {
-            background-color: #888888; /* Darker grey on hover */
+            background-color: #888888;
             color: #fff;
             transform: translateY(-2px);
         }
@@ -175,7 +184,7 @@
         .contact-me-button {
             max-width: 200px;
             margin: 0 auto; 
-            background-color: #777777; /* Distinct dark grey for contact */
+            background-color: #777777;
             color: #fff;
         }
 
@@ -202,7 +211,7 @@
                     </svg>
                     <div class="play-line"></div>
                 </div>
-                <img src="./images/profile.jpg" alt="Zaheer Abbas Profile Picture" class="profile-pic">
+                <img src="profile.jpg" alt="Zaheer Abbas Profile Picture" class="profile-pic">
             </div>
             <h2>DEPUTY IT MANAGER FOR INFRASTRUCTURE</h2>
         </header>
@@ -249,7 +258,7 @@
             // 1. Create a new utterance object
             utterance = new SpeechSynthesisUtterance(bioText);
 
-            // 2. Configure for a robot/male sound (prioritizes lower pitch for robot effect)
+            // 2. Configure for a robot/male sound 
             utterance.pitch = 0.5; // Lower pitch for deeper voice
             utterance.rate = 0.9;  // Slightly slower speed for robot effect
             

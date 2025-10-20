@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zaheer Abbas - Key Skills & Tools</title>
     
-    <!-- LINK GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 
-    <!-- EMBEDDED CSS STYLES AND MAGICAL EFFECTS -->
     <style>
         /* CSS Keyframes for Page Load Effect: Blur-to-HD, slow motion (2 seconds) */
         @keyframes pageLoadFade {
@@ -20,9 +18,10 @@
 
         /* CSS Keyframes for the Subtle Container Glow */
         @keyframes subtleGlow {
-            0% { box-shadow: 0 0 10px rgba(180, 180, 180, 0.2); }
-            50% { box-shadow: 0 0 20px rgba(180, 180, 180, 0.4); }
-            100% { box-shadow: 0 0 10px rgba(180, 180, 180, 0.2); }
+            /* ************ MODIFIED: Adjusting glow for a dark background ************ */
+            0% { box-shadow: 0 0 10px rgba(200, 200, 200, 0.1); }
+            50% { box-shadow: 0 0 20px rgba(200, 200, 200, 0.3); }
+            100% { box-shadow: 0 0 10px rgba(200, 200, 200, 0.1); }
         }
 
         /* General Body and Container Styles */
@@ -30,8 +29,10 @@
             font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #e0e0e0;
-            color: #333;
+            /* ************ MODIFIED: Dark Grey Background ************ */
+            background-color: #1e1e1e;
+            /* ************ MODIFIED: Light Text for Contrast ************ */
+            color: #f0f0f0;
             line-height: 1.6;
             display: flex;
             justify-content: center;
@@ -43,10 +44,17 @@
         .container {
             width: 90%;
             max-width: 1000px;
-            background-color: #f8f8f8;
+            /* ************ MODIFIED: Semi-transparent dark grey for the blur effect ************ */
+            background-color: rgba(30, 30, 30, 0.8);
             padding: 40px;
             border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            /* ************ NEW: The Blur (Frosted Glass) Effect ************ */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            /* ************ MODIFIED: Stronger shadow for dark mode ************ */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            /* ************ NEW: Subtle white border for definition ************ */
+            border: 1px solid rgba(255, 255, 255, 0.1); 
             animation: 
                 pageLoadFade 2s ease-out forwards, 
                 subtleGlow 4s infinite alternate 2s;
@@ -65,7 +73,8 @@
         .header-title h1 {
             font-family: 'Playfair Display', serif;
             font-size: 3.8em; 
-            color: #1a1a1a;
+            /* ************ MODIFIED: Light color for Dark Mode ************ */
+            color: #ffffff;
             line-height: 1;
             margin: 0;
             font-weight: 700;
@@ -76,19 +85,22 @@
         .home-button {
             display: inline-block;
             padding: 10px 30px;
-            background-color: #777777; 
+            /* ************ MODIFIED: Dark button color ************ */
+            background-color: #444444; 
             color: #fff;
             text-decoration: none;
             border-radius: 50px;
             font-weight: 600;
             font-size: 1em;
             transition: background-color 0.3s ease, transform 0.2s ease;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+            /* ************ MODIFIED: Stronger shadow for dark mode ************ */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
             margin-top: 10px; 
         }
 
         .home-button:hover {
-            background-color: #555555;
+            /* ************ MODIFIED: Lighter hover color ************ */
+            background-color: #666666;
             transform: translateY(-2px);
         }
 
@@ -110,13 +122,15 @@
         .skill-box, .image-container {
             flex: 1 1 50%; /* Allows both elements to take up equal width */
             border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            /* ************ MODIFIED: Stronger shadow for dark mode ************ */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
             min-height: 350px; /* Ensures vertical alignment in the pair */
         }
         
         /* Skill Box Styling - Rounded Grey Box from Design */
         .skill-box {
-            background-color: #cccccc; 
+            /* ************ MODIFIED: Semi-transparent light grey for content boxes ************ */
+            background-color: rgba(60, 60, 60, 0.7); 
             padding: 25px;
             line-height: 1.5;
             display: flex;
@@ -126,7 +140,8 @@
 
         .skill-box h3 {
             font-family: 'Playfair Display', serif;
-            color: #1a1a1a;
+            /* ************ MODIFIED: Light color for Dark Mode ************ */
+            color: #ffffff;
             font-size: 1.5em;
             margin-top: 0;
             margin-bottom: 15px;
@@ -137,7 +152,8 @@
         .skill-box p {
             font-weight: 600;
             margin-bottom: 10px;
-            color: #333;
+            /* ************ MODIFIED: Light color for Dark Mode ************ */
+            color: #dddddd;
         }
 
         .skill-box ul {
@@ -149,15 +165,17 @@
 
         .skill-box ul li {
             padding: 3px 0;
-            color: #444;
+            /* ************ MODIFIED: Lighter text for Dark Mode ************ */
+            color: #cccccc;
             font-size: 0.95em;
             text-indent: -10px;
             padding-left: 10px;
         }
 
         .skill-box ul li:before {
-            content: '- ';
-            color: #444;
+            content: '— '; /* Changed bullet to an em-dash for clean look */
+            /* ************ MODIFIED: Lighter bullet point color ************ */
+            color: #888888;
         }
 
         /* Image Containers and Image Styling */
@@ -174,7 +192,6 @@
         }
         
         /* ZIGZAG STYLING */
-        /* For pairs where the image is on the left (2nd and 4th pair) */
         .content-pair:nth-child(even) {
             /* On desktop, reverse the order of items to put the image first */
             flex-direction: row-reverse;
@@ -200,7 +217,6 @@
                 gap: 20px;
             }
             
-            /* Crucial: For mobile, remove the row-reverse so content always stacks text then image or image then text depending on the order in the HTML, avoiding confusion. We will ensure the HTML order is logical. */
             .content-pair:nth-child(even) {
                 flex-direction: column;
             }
@@ -214,15 +230,12 @@
             <div class="header-title">
                 <h1>KEY SKILLS<br>AND TOOLS</h1>
             </div>
-            <!-- Home Button -->
             <a href="index.html" class="home-button">Home</a>
         </header>
 
         <section class="skills-flow">
             
-            <!-- PAIR 1 (Odd: Text-Image) -->
             <div class="content-pair">
-                <!-- Text on Left: Leadership -->
                 <div class="skill-box">
                     <h3>Leadership & People Managment</h3>
                     <p>Proven leader with expertise in:</p>
@@ -240,15 +253,12 @@
                     </ul>
                 </div>
 
-                <!-- Image on Right: paragraph1.jpg -->
                 <div class="image-container">
                     <img src="paragraph1.jpg" alt="AI and Digital Infrastructure" class="content-image">
                 </div>
             </div>
 
-            <!-- PAIR 2 (Even: Image-Text) - Uses row-reverse on desktop -->
             <div class="content-pair">
-                <!-- Text on Right: Automation -->
                 <div class="skill-box">
                     <h3>Automation & DevOps</h3>
                     <p>Expertise in:</p>
@@ -258,7 +268,7 @@
                         <li>Load balancing: HAProxy with keepalived</li>
                         <li>Infrastructure as code: Configuration as code practices</li>
                     </ul>
-                    <p style="font-weight: 700; text-align: center; margin-top: 15px; margin-bottom: 5px;">Monitoring, Security & Compliance</p>
+                    <p style="font-weight: 700; text-align: center; margin-top: 15px; margin-bottom: 5px; color: #ffffff;">Monitoring, Security & Compliance</p>
                     <ul>
                         <li>Monitoring tools: Zabbix, Grafana, ELK</li>
                         <li>Security tools: Wazuh, auditd, Fail2Ban, ModSecurity</li>
@@ -267,15 +277,12 @@
                     </ul>
                 </div>
 
-                <!-- Image on Left (Reversed order for this pair): paragraph3.jpg -->
                 <div class="image-container">
                     <img src="paragraph3.jpg" alt="Automation and Security" class="content-image">
                 </div>
             </div>
 
-            <!-- PAIR 3 (Odd: Text-Image) -->
             <div class="content-pair">
-                <!-- Text on Left: Unix -->
                 <div class="skill-box">
                     <h3>Unix & Platform Operations</h3>
                     <p>Expertise in:</p>
@@ -290,15 +297,12 @@
                     </ul>
                 </div>
                 
-                <!-- Image on Right: paragraph2.jpg -->
                 <div class="image-container">
                     <img src="paragraph2.jpg" alt="Cloud Infrastructure and DevOps" class="content-image">
                 </div>
             </div>
 
-            <!-- PAIR 4 (Even: Image-Text) - Uses row-reverse on desktop -->
             <div class="content-pair">
-                <!-- Text on Right: Networking & Cloud -->
                 <div class="skill-box">
                     <h3>Networking & Cloud</h3>
                     <p>Expertise in:</p>
@@ -309,14 +313,13 @@
                         <li>Cloud platforms: Azure, AWS, OpenStack</li>
                         <li>Network security: pfSense, Mikrotik</li>
                     </ul>
-                    <p style="font-weight: 700; text-align: center; margin-top: 15px; margin-bottom: 5px;">Storage & Backup</p>
+                    <p style="font-weight: 700; text-align: center; margin-top: 15px; margin-bottom: 5px; color: #ffffff;">Storage & Backup</p>
                     <ul>
                         <li>Storage systems: NetApp ONTAP (capacity, snapshots, quotas), NAS platforms</li>
                         <li>Backup solutions: Veeam, IBM HFS</li>
                     </ul>
                 </div>
 
-                <!-- Image on Left (Reversed order for this pair): paragraph4.jpg -->
                 <div class="image-container">
                     <img src="paragraph4.jpg" alt="General Infrastructure and Networking" class="content-image">
                 </div>

@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zaheer Abbas - Certifications & Trainings</title>
     
-    <!-- LINK GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 
-    <!-- EMBEDDED CSS STYLES AND MAGICAL EFFECTS -->
     <style>
         /* CSS Keyframes for Page Load Effect: Blur-to-HD, slow motion (2 seconds) */
         @keyframes pageLoadFade {
@@ -20,9 +18,10 @@
 
         /* CSS Keyframes for the Subtle Container Glow */
         @keyframes subtleGlow {
-            0% { box-shadow: 0 0 10px rgba(180, 180, 180, 0.2); }
-            50% { box-shadow: 0 0 20px rgba(180, 180, 180, 0.4); }
-            100% { box-shadow: 0 0 10px rgba(180, 180, 180, 0.2); }
+            /* ************ MODIFIED: Adjusting glow for a dark background ************ */
+            0% { box-shadow: 0 0 10px rgba(200, 200, 200, 0.1); }
+            50% { box-shadow: 0 0 20px rgba(200, 200, 200, 0.3); }
+            100% { box-shadow: 0 0 10px rgba(200, 200, 200, 0.1); }
         }
 
         /* General Body and Container Styles */
@@ -30,8 +29,10 @@
             font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #e0e0e0;
-            color: #333;
+            /* ************ MODIFIED: Dark Grey Background ************ */
+            background-color: #1e1e1e;
+            /* ************ MODIFIED: Light Text for Contrast ************ */
+            color: #f0f0f0;
             line-height: 1.6;
             display: flex;
             justify-content: center;
@@ -57,7 +58,8 @@
         .main-title {
             font-family: 'Playfair Display', serif;
             font-size: 4em; 
-            color: #1a1a1a;
+            /* ************ MODIFIED: Light color for Dark Mode ************ */
+            color: #ffffff;
             line-height: 1.1;
             margin-bottom: 50px;
             font-weight: 700;
@@ -67,14 +69,24 @@
 
         /* --- Certification List Box (Adjusted Width) --- */
         .cert-box {
-            background-color: #cccccc; 
+            /* ************ MODIFIED: Semi-transparent dark grey for Frosted Glass ************ */
+            background-color: rgba(30, 30, 30, 0.7); 
+            /* ************ NEW: The Blur (Frosted Glass) Effect ************ */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            
             /* Set max-width to match the visual size of the homepage paragraph box */
             width: 90%; 
-            max-width: 650px; /* Reduced from 750px to match homepage intro width */
+            max-width: 650px; 
             margin: 0 auto;
             padding: 40px 60px;
-            border-radius: 40px; 
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            /* ************ MODIFIED: Border radius reduced slightly for the blur look ************ */
+            border-radius: 20px; 
+            /* ************ MODIFIED: Stronger shadow for dark mode ************ */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            /* ************ NEW: Subtle border for definition ************ */
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            
             animation: subtleGlow 4s infinite alternate 2s;
             text-align: left;
         }
@@ -88,7 +100,8 @@
         .cert-box ul li {
             font-size: 1.1em;
             font-weight: 600;
-            color: #1a1a1a;
+            /* ************ MODIFIED: Light text for Dark Mode ************ */
+            color: #f0f0f0;
             margin-bottom: 20px;
             text-indent: -1.5em; 
             padding-left: 1.5em;
@@ -96,7 +109,8 @@
 
         .cert-box ul li:before {
             content: '• '; 
-            color: #444;
+            /* ************ MODIFIED: Lighter bullet point color ************ */
+            color: #999;
             font-size: 1.2em;
             line-height: 1;
         }
@@ -113,7 +127,8 @@
         .home-button {
             display: inline-block;
             padding: 15px 60px;
-            background-color: #777777; 
+            /* ************ MODIFIED: Darker button color ************ */
+            background-color: #444444; 
             color: #fff;
             text-decoration: none;
             
@@ -122,15 +137,19 @@
             font-weight: 700;
             font-size: 1em;
             text-transform: uppercase;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            /* ************ MODIFIED: Stronger shadow for dark mode ************ */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
             transition: all 0.3s ease;
-            border: 1px solid #555;
+            /* ************ MODIFIED: Dark border for contrast ************ */
+            border: 1px solid #333;
         }
 
         .home-button:hover {
-            background-color: #555555;
+            /* ************ MODIFIED: Lighter hover color ************ */
+            background-color: #666666;
             transform: translateY(-2px) scale(1.05);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            /* ************ MODIFIED: Stronger shadow for dark mode ************ */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
         }
 
         /* Horizontal Navigation Buttons */
@@ -147,14 +166,18 @@
             flex-basis: auto; 
             display: block;
             padding: 15px 30px;
-            background-color: #a0a0a0;
-            color: #1a1a1a;
+            /* ************ MODIFIED: Dark button color ************ */
+            background-color: #383838;
+            /* ************ MODIFIED: Light text color ************ */
+            color: #f0f0f0;
             text-decoration: none;
             
             /* Enhanced Styling */
             border-radius: 50px; 
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.5);
-            border: 1px solid #999;
+            /* ************ MODIFIED: Dark shadow and subtle inset ************ */
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            /* ************ MODIFIED: Darker border ************ */
+            border: 1px solid #555;
             
             font-weight: 600;
             font-size: 0.9em;
@@ -164,10 +187,11 @@
         }
 
         .nav-link:hover {
-            background: linear-gradient(to top, #888888, #b0b0b0);
+            /* ************ MODIFIED: Lighter hover background ************ */
+            background: linear-gradient(to top, #555555, #777777);
             color: #fff;
             transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
         }
 
         /* Responsive Adjustments */
@@ -178,7 +202,7 @@
             .cert-box {
                 padding: 30px 20px;
                 border-radius: 20px;
-                max-width: 90%; /* Ensure it's fluid on mobile */
+                max-width: 90%; 
             }
             .cert-box ul li {
                 font-size: 1em;
@@ -213,12 +237,10 @@
             </ul>
         </section>
         
-        <!-- Home Button (Centered and separate) -->
         <div class="home-button-container">
             <a href="index.html" class="home-button">Home</a>
         </div>
 
-        <!-- Horizontal Navigation Buttons - REARRANGED as per design -->
         <nav class="nav-buttons-grid">
             <a href="skills.html" class="nav-link">KEY SKILLS & TOOLS</a>
             <a href="education.html" class="nav-link">EDUCATION</a>

@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zaheer Abbas - Work Experience</title>
     
-    <!-- LINK GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 
-    <!-- EMBEDDED CSS STYLES AND MAGICAL EFFECTS -->
     <style>
         /* CSS Keyframes for Page Load Effect: Blur-to-HD, slow motion (2 seconds) */
         @keyframes pageLoadFade {
@@ -234,7 +232,6 @@
 <body>
     <div class="main-wrapper">
         
-        <!-- NAVIGATION BAR AT THE TOP -->
         <nav class="nav-buttons-grid">
             <a href="index.html" class="nav-link">HOME</a>
             <a href="skills.html" class="nav-link">KEY SKILLS & TRAINING</a>
@@ -245,10 +242,8 @@
 
         <header class="header-grid">
             <div class="left-header">
-                <!-- Main Title -->
                 <h1 class="main-title">WORK<br>EXPERIENCE</h1>
 
-                <!-- Robot Voice Player -->
                 <div class="play-button-container" onclick="toggleRobotVoice()">
                     <svg class="play-icon" viewBox="0 0 24 24">
                         <path d="M8 5v14l11-7z"/>
@@ -259,12 +254,10 @@
             </div>
             
             <div class="right-header">
-                <!-- Image from Design -->
-                <img src="paragraph6.jpg" onerror="this.onerror=null; this.src='https://placehold.co/450x300/a0a0a0/333?text=Work+Image';" alt="Workplace Image" class="header-image">
+                <img src="paragraph5.jpg" onerror="this.onerror=null; this.src='https://placehold.co/450x300/a0a0a0/333?text=Work+Image';" alt="Workplace Image" class="header-image">
             </div>
         </header>
 
-        <!-- Main Content Box (Now smaller) -->
         <section class="content-box" id="work-text">
             <p>I'm Deputy IT Manager for Infrastructure at the University of Oxford's Computer Science Department. I've been in this role since August 2022, and my days are filled with excitement. I lead infrastructure strategy and operations across two datacenters to ensure our systems are running smoothly. I manage a talented team of Linux and Windows system administrators, and we've achieved some amazing things together.</p>
 
@@ -284,9 +277,8 @@
         </section>
     </div>
 
-    <!-- EMBEDDED JAVASCRIPT FOR ROBOT VOICE (TTS) -->
     <script>
-        // Note: The onerror attribute on the image handles the case where paragraph6.jpg might not be found.
+        // Note: The onerror attribute on the image handles the case where paragraph5.jpg might not be found.
         const synth = window.speechSynthesis;
         const workText = document.getElementById('work-text').textContent;
         const playButtonContainer = document.querySelector('.play-button-container');

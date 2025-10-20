@@ -28,61 +28,47 @@
             font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 0;
-            /* background-color: #e0e0e0; <-- REMOVE this or it will cover the image */
-            color: #333;
+            /* ************ MODIFIED: Dark Grey Background ************ */
+            background-color: #1e1e1e; 
+            /* ************ MODIFIED: Light Text for Contrast ************ */
+            color: #f0f0f0; 
             line-height: 1.6;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             
-            /* * ----------------------------------------
-            * NEW CODE FOR BACKGROUND IMAGE AND BLUR
-            * ----------------------------------------
+            /* Background image is no longer needed on the body itself since we're using a solid color, 
+               but I'll keep the image code as an optional layer if you want to use it instead of the solid color.
             */
-            
-            /* 1. Set the image, cover the entire viewport, and fix it */
-            background-image: url('background1.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-
-        /* * ----------------------------------------
-        * NEW CODE FOR THE BLUR EFFECT
-        * ----------------------------------------
-        */
-        /* Create a pseudo-element for the blur effect */
-        body::before {
-            content: '';
-            position: fixed; /* Fixed position so it stays put */
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('background1.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            
-            /* Apply the blur filter */
-            filter: blur(10px); /* Adjust the value for desired blur amount */
-            
-            z-index: -1; /* Place it behind the content */
+            /* background-image: url('background1.jpg'); */
+            /* background-size: cover; */
+            /* background-position: center; */
+            /* background-attachment: fixed; */
         }
         
-        /* * Optional: Change container background to semi-transparent white 
-        * to make the text readable over the dark blurred image.
+        /* The separate full-screen blur effect using ::before is no longer necessary 
+           since we're using the superior backdrop-filter on the container itself. 
+           I have removed the 'body::before' block. 
         */
+
         .container {
             width: 90%;
             max-width: 800px;
-            background-color: rgba(255, 255, 255, 0.85); /* Semi-transparent white */
+            /* ************ MODIFIED: Semi-Transparent Dark Grey for Frosted Glass Effect ************ */
+            background-color: rgba(30, 30, 30, 0.7); /* Darker semi-transparent background */
             padding: 30px;
             border-radius: 15px;
             
+            /* ************ NEW: The Blur (Frosted Glass) Effect ************ */
+            backdrop-filter: blur(10px); /* Apply blur to elements behind the container */
+            -webkit-backdrop-filter: blur(10px); /* Vendor prefix for Safari support */
+            
+            /* ************ MODIFIED: Subtle Border for Definition ************ */
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            
             /* Apply the two magical effects */
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Stronger shadow for dark mode */
             animation: 
                 pageLoadFade 2s ease-out forwards, /* Blur-to-HD effect */
                 subtleGlow 4s infinite alternate 2s; /* Subtle grey pulse starts after load */
@@ -92,15 +78,17 @@
         }
         
         /* The rest of your styles... */
+        
         /* Header and Hero Section */
         .hero-section { margin-bottom: 40px; }
         .hero-section h1 {
             font-family: 'Playfair Display', serif;
             font-size: 3.5em;
             margin-bottom: 5px;
-            color: #1a1a1a;
+            /* ************ MODIFIED: Light color for Dark Mode ************ */
+            color: #ffffff; 
             letter-spacing: 1px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
         .profile-area {
             display: flex;
@@ -123,7 +111,8 @@
         .play-icon {
             width: 35px;
             height: 35px;
-            fill: #555;
+            /* ************ MODIFIED: Light color for Dark Mode ************ */
+            fill: #cccccc; 
             transition: fill 0.2s;
             position: absolute;
             left: 0;
@@ -132,7 +121,8 @@
         .play-line {
             width: 80px;
             height: 2px;
-            background-color: #555;
+            /* ************ MODIFIED: Light color for Dark Mode ************ */
+            background-color: #cccccc; 
             margin-left: 10px;
             transform: translateX(20px);
         }
@@ -144,14 +134,16 @@
             height: 150px;
             border-radius: 50%;
             object-fit: cover;
-            border: 5px solid #fff;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); 
+            /* ************ MODIFIED: Dark border for contrast ************ */
+            border: 5px solid #282828; 
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.4); 
         }
 
         .hero-section h2 {
             font-family: 'Montserrat', sans-serif;
             font-size: 1.2em;
-            color: #444;
+            /* ************ MODIFIED: Lighter color for Dark Mode ************ */
+            color: #b0b0b0; 
             font-weight: 600;
             margin-top: 20px;
             letter-spacing: 0.5px;
@@ -159,16 +151,18 @@
 
         /* About Me Section - Highlighted Box */
         .about-me-section {
-            background-color: #cccccc;
+            /* ************ MODIFIED: Semi-transparent background for blur effect to show through ************ */
+            background-color: rgba(60, 60, 60, 0.7); 
             padding: 30px 40px;
             border-radius: 10px;
             margin-bottom: 50px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         }
 
         .about-me-section p {
             font-size: 1em;
-            color: #222;
+            /* ************ MODIFIED: Lighter text for Dark Mode ************ */
+            color: #f0f0f0; 
             line-height: 1.8;
             text-align: justify;
         }
@@ -177,7 +171,8 @@
         .navigation-section h3 {
             font-family: 'Playfair Display', serif;
             font-size: 1.8em;
-            color: #222;
+            /* ************ MODIFIED: Light color for Dark Mode ************ */
+            color: #ffffff; 
             margin-bottom: 30px;
             position: relative;
         }
@@ -189,7 +184,8 @@
             bottom: -10px;
             width: 60px;
             height: 2px;
-            background-color: #555;
+            /* ************ MODIFIED: Light color for Dark Mode ************ */
+            background-color: #cccccc; 
         }
 
         .nav-buttons {
@@ -202,19 +198,22 @@
         .nav-button {
             display: block;
             padding: 15px 10px;
-            background-color: #a0a0a0;
-            color: #1a1a1a;
+            /* ************ MODIFIED: Darker button color ************ */
+            background-color: #383838; 
+            /* ************ MODIFIED: Light text color ************ */
+            color: #ffffff; 
             text-decoration: none;
             border-radius: 50px;
             font-weight: 600;
             font-size: 0.85em;
             transition: background-color 0.3s ease, transform 0.2s ease;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
             text-transform: uppercase;
         }
 
         .nav-button:hover {
-            background-color: #888888;
+            /* ************ MODIFIED: Lighter hover color ************ */
+            background-color: #555555; 
             color: #fff;
             transform: translateY(-2px);
         }
@@ -222,7 +221,8 @@
         .contact-me-button {
             max-width: 200px;
             margin: 0 auto; 
-            background-color: #777777;
+            /* ************ MODIFIED: Primary dark button color ************ */
+            background-color: #777777; 
             color: #fff;
         }
 
@@ -238,7 +238,6 @@
 </head>
 <body>
     <div class="container">
-        
         <header class="hero-section">
             <h1>Zaheer Abbas</h1>
             <div class="profile-area">

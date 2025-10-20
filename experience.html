@@ -3,273 +3,244 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zaheer Abbas - Work Experience</title>
+    <title>Zaheer Abbas - Education</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 
     <style>
-        /* CSS Keyframes for Page Load Effect: Blur-to-HD, slow motion (2 seconds) */
+        /* --- CORE STYLES AND ANIMATIONS --- */
         @keyframes pageLoadFade {
             0% { opacity: 0; filter: blur(5px); transform: scale(0.98); }
             100% { opacity: 1; filter: blur(0); transform: scale(1); }
         }
 
-        /* CSS Keyframes for the Subtle Container Glow */
-        @keyframes subtleGlow {
-            0% { box-shadow: 0 0 10px rgba(180, 180, 180, 0.2); }
-            50% { box-shadow: 0 0 20px rgba(180, 180, 180, 0.4); }
-            100% { box-shadow: 0 0 10px rgba(180, 180, 180, 0.2); }
-        }
-
-        /* General Body and Container Styles */
         body {
             font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #e0e0e0;
-            color: #333;
+            /* ************ MODIFIED: Dark Grey Background ************ */
+            background-color: #1e1e1e;
+            /* ************ MODIFIED: Light Text for Contrast ************ */
+            color: #f0f0f0;
             line-height: 1.6;
             display: flex;
-            flex-direction: column; /* Changed to column to allow content to flow vertically naturally */
-            justify-content: flex-start; /* Start content from the top */
-            align-items: center;
+            justify-content: center;
+            align-items: flex-start;
             min-height: 100vh;
-            overflow-x: hidden;
+            padding: 50px 20px;
+            box-sizing: border-box;
         }
 
         .main-wrapper {
-            width: 90%;
+            width: 100%;
             max-width: 1000px;
-            padding: 50px 0;
             animation: pageLoadFade 2s ease-out forwards;
             opacity: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        /* --- TOP NAVIGATION BAR STYLING (NEW) --- */
-        .nav-buttons-grid {
+        /* --- NAVIGATION BUTTONS (Top Bar) --- */
+        .nav-buttons-top {
             display: flex;
             justify-content: center;
-            flex-wrap: wrap; 
-            gap: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 50px;
             width: 100%;
-            max-width: 950px;
-            margin: 0 auto 50px auto; /* Margin at bottom to separate from header */
+        }
+
+        .nav-buttons-bottom {
+            margin-top: 50px;
+            margin-bottom: 20px;
         }
 
         .nav-link {
-            flex-basis: auto; 
             display: block;
-            padding: 15px 30px;
-            background-color: #a0a0a0;
-            color: #1a1a1a;
+            padding: 12px 25px;
+            /* ************ MODIFIED: Darker button color ************ */
+            background-color: #383838;
+            /* ************ MODIFIED: Light text color ************ */
+            color: #f0f0f0;
             text-decoration: none;
-            border-radius: 50px; 
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.5);
-            border: 1px solid #999;
+            border-radius: 50px;
+            /* ************ MODIFIED: Dark shadow and subtle inset ************ */
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            /* ************ MODIFIED: Darker border ************ */
+            border: 1px solid #555;
             font-weight: 600;
             font-size: 0.9em;
             text-align: center;
             text-transform: uppercase;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .nav-link:hover {
-            background: linear-gradient(to top, #888888, #b0b0b0);
+            /* ************ MODIFIED: Lighter hover background ************ */
+            background: linear-gradient(to top, #555555, #777777);
             color: #fff;
             transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
         }
 
-        /* --- Header Section Layout (Title, Image) --- */
+        /* Active page style (Education) - It is missing from the list, so I'll add it to the correct link now in the HTML and make it inactive below */
+        .nav-buttons-top .nav-link.active-page { 
+            background: #555555;
+            color: #ffffff;
+            box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.5);
+            pointer-events: none;
+        }
+        
+        /* The main HOME button at the bottom uses the standard link style */
+        .home-button {
+            padding: 12px 50px;
+        }
+
+        /* --- HEADER SECTION (Title, Play Icon, and Image) --- */
         .header-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr; /* Two main columns */
-            gap: 20px;
-            align-items: center;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center; 
+            width: 100%;
+            max-width: 800px;
             margin-bottom: 40px;
-            padding: 0 10px; /* Padding for overall structure */
+            padding: 0 10px;
         }
 
         .left-header {
-            text-align: left;
-            padding-left: 0;
+            flex-grow: 1;
+            padding-right: 20px;
         }
         
-        /* Title Styling */
         .main-title {
             font-family: 'Playfair Display', serif;
-            font-size: 4em; 
-            color: #1a1a1a;
+            font-size: 5em; 
+            /* ************ MODIFIED: Light color for Dark Mode ************ */
+            color: #ffffff;
             line-height: 1.1;
-            margin: 20px 0 10px 0;
+            margin: 0;
             font-weight: 700;
+            font-style: italic; 
             text-transform: uppercase;
         }
-        
-        /* Robot Voice Icon (Matching Homepage Style) */
-        .play-button-container {
+
+        .play-line {
             display: flex;
             align-items: center;
+            margin-top: 15px; 
             cursor: pointer;
-            margin: 10px 0;
-            transition: transform 0.2s ease-in-out;
-            position: relative;
         }
-        .play-icon {
-            width: 35px;
-            height: 35px;
-            fill: #555;
-            transition: fill 0.2s;
-            position: absolute;
-            left: 0;
+
+        .play-line svg {
+            width: 20px;
+            height: 20px;
+            /* ************ MODIFIED: Light fill color ************ */
+            fill: #f0f0f0;
+            margin-right: 10px;
+            transition: transform 0.2s ease;
         }
-        .play-line {
-            width: 80px;
+
+        .play-line:hover svg {
+            transform: scale(1.1);
+        }
+
+        .play-line .line {
             height: 2px;
-            background-color: #555;
-            margin-left: 10px;
-            transform: translateX(20px);
+            width: 250px; 
+            /* ************ MODIFIED: Light line color ************ */
+            background-color: #f0f0f0;
+            transition: background-color 0.2s ease;
         }
-        .play-button-container.playing .play-icon { fill: #dc3545; }
 
-
-        /* Right Header Image */
         .right-header {
-            text-align: right;
+            flex-shrink: 0;
+            width: 200px; 
+            height: 200px;
+            overflow: hidden;
+            border-radius: 20px;
         }
+
         .header-image {
             width: 100%;
-            max-width: 450px;
-            height: auto;
-            border-radius: 20px;
+            height: 100%;
             object-fit: cover;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-        }
-        
-        /* SECOND IMAGE BELOW THE FIRST SECTION */
-        .sub-section-image {
-            width: 95%;
-            max-width: 700px;
-            height: auto;
-            border-radius: 20px;
-            object-fit: cover;
-            margin: 30px auto;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-            display: block; /* Centers the image */
+            /* ************ MODIFIED: Stronger shadow for dark mode ************ */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
         }
 
 
-        /* --- Content Box Styling (REDUCED WIDTH) --- */
+        /* --- MAIN CONTENT BOX --- */
         .content-box {
-            background-color: #cccccc; 
-            width: 95%; /* Fluid width */
-            max-width: 700px; /* Reduced to match homepage paragraph width */
-            margin: 0 auto 40px auto; /* Increased bottom margin for separation */
-            padding: 30px 40px;
-            border-radius: 20px; 
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            animation: subtleGlow 4s infinite alternate 2s;
-            text-align: left;
-        }
-        
-        /* New section style to contain the next experience block */
-        .experience-section {
-            width: 95%; 
-            max-width: 700px;
-            margin: 0 auto 50px auto; /* Standard margin for sections */
-        }
-
-        .content-box p, .content-box ul {
-            font-size: 1.0em;
-            line-height: 1.7;
-            color: #222;
-            margin-bottom: 20px;
+            /* ************ MODIFIED: Semi-transparent dark grey for Frosted Glass ************ */
+            background-color: rgba(30, 30, 30, 0.7); 
+            /* ************ NEW: The Blur (Frosted Glass) Effect ************ */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            /* ************ NEW: Subtle border for definition ************ */
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            
+            width: 100%;
+            max-width: 750px; 
+            margin: 0 auto;
+            padding: 35px 50px;
+            border-radius: 50px; 
+            /* ************ MODIFIED: Stronger shadow for dark mode ************ */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            text-align: center; 
         }
 
-        .content-box h3 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            font-size: 1.8em;
-            color: #1a1a1a;
-            line-height: 1.2;
-            margin-top: 0;
-            margin-bottom: 10px;
-        }
-
-        .content-box .job-title {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
+        .content-box p {
             font-size: 1.1em;
-            color: #444;
-            margin-top: 0;
-            margin-bottom: 20px;
-            display: block;
-        }
-
-
-        .content-box h4 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 1.2em;
-            color: #1a1a1a;
-            margin-top: 30px;
-            margin-bottom: 10px;
+            line-height: 1.7;
+            /* ************ MODIFIED: Light text for Dark Mode ************ */
+            color: #f0f0f0;
+            font-weight: 600; 
+            margin: 0;
         }
         
-        /* List Styling */
-        .content-box ul {
-            list-style: none;
-            padding-left: 10px;
-        }
-        .content-box ul li {
-            position: relative;
-            margin-bottom: 8px;
-            padding-left: 20px;
-        }
-        .content-box ul li:before {
-            content: '–'; /* Using an en dash for bullet points */
-            position: absolute;
-            left: 0;
-            color: #444;
-            font-weight: bold;
-        }
-
-        /* Responsive Adjustments */
+        /* --- RESPONSIVE ADJUSTMENTS --- */
         @media (max-width: 768px) {
-            .nav-buttons-grid {
-                margin-bottom: 30px;
-                gap: 10px;
+            .nav-buttons-top {
+                gap: 8px;
             }
             .nav-link {
-                padding: 10px 15px;
+                padding: 10px 12px;
+                font-size: 0.8em;
             }
             .header-grid {
-                grid-template-columns: 1fr;
-                gap: 0;
+                flex-direction: column; 
+                align-items: center;
+                text-align: center;
+                gap: 20px;
             }
             .left-header {
-                order: 2; 
-                text-align: center;
+                order: 2;
+                width: 100%;
+                padding-right: 0;
             }
             .right-header {
-                order: 1; 
-                text-align: center;
-                margin-bottom: 20px;
-            }
-            .header-image {
-                max-width: 90%;
+                order: 1;
+                width: 150px; 
+                height: 150px;
             }
             .main-title {
                 font-size: 3em;
             }
             .content-box {
-                padding: 20px;
-                max-width: 95%;
+                padding: 25px 30px;
+                border-radius: 30px;
             }
-            .content-box h3 {
-                font-size: 1.5em;
+            .play-line {
+                justify-content: center;
+                margin-top: 10px;
+            }
+            .play-line .line {
+                width: 100px;
             }
         }
     </style>
@@ -277,184 +248,232 @@
 <body>
     <div class="main-wrapper">
         
-        <nav class="nav-buttons-grid">
-            <a href="index.html" class="nav-link">HOME</a>
+        <nav class="nav-buttons-top">
+            <a href="education.html" class="nav-link active-page">EDUCATION</a>
             <a href="skills.html" class="nav-link">KEY SKILLS & TOOLS</a>
-            <a href="certifications.html" class="nav-link">CERTIFICATIONS & TRAININGS</a>
-            <a href="education.html" class="nav-link">EDUCATION</a>
+            <a href="certifications.html" class="nav-link">CERTIFICATIONS & TRAINING</a>
+            <a href="experience.html" class="nav-link">WORK EXPERIENCE</a>
             <a href="contact.html" class="nav-link">CONTACT ME</a>
-            <a href="project.html" class="nav-link">PROJECTS SHOWCASE</a>
         </nav>
 
         <header class="header-grid">
             <div class="left-header">
-                <h1 class="main-title">WORK<br>EXPERIENCE</h1>
+                <h1 class="main-title">EDUCATION</h1>
 
-                <div class="play-button-container" onclick="toggleRobotVoice()">
+                <div class="play-line" onclick="handleTtsClick(this)">
                     <svg class="play-icon" viewBox="0 0 24 24">
                         <path d="M8 5v14l11-7z"/>
-                        <path d="M0 0h24v24H0z" fill="none"/>
                     </svg>
-                    <div class="play-line"></div>
+                    <div class="line"></div>
                 </div>
             </div>
             
             <div class="right-header">
-                <img src="paragraph6.jpg" onerror="this.onerror=null; this.src='https://placehold.co/450x300/a0a0a0/333?text=Work+Image+6';" alt="University of Oxford Building" class="header-image">
+                <img src="paragraph8.jpg" onerror="this.onerror=null; this.src='https://placehold.co/200x200/383838/f0f0f0?text=Campus';" alt="Education Campus Image" class="header-image">
             </div>
         </header>
 
-        <section class="content-box" id="work-text-oxford">
-            <h3>University of Oxford (Computer Science Department)</h3>
-            <span class="job-title">Deputy IT Manager for Infrastructure | Aug 2022 – Present</span>
-
-            <p>I am a senior member of CS IT Team, and am mainly responsible for departmental ICT Strategies, Policies and Planning, as well as Systems Administration, Support, and Security. My daily routine includes:</p>
-            <ul>
-                <li>Leading infrastructure strategy and operations across two departmental datacentres, comprising hundreds of physical and virtual servers.</li>
-                <li>Manage and mentor a team of Linux and Windows system administrators, overseeing service delivery, monitoring, compliance, and lifecycle management.</li>
-                <li>Oversee and manage the annual infrastructure budget (£300k–£500k), handling procurement planning, vendor relationships, and cost optimisation.</li>
-                <li>Draft and maintain the cyber security strategy and policy documentation, adhering to university and government policies.</li>
-                <li>Act as a technical lead and escalation point for core infrastructure, including, Windows/Linux systems, networking (Cisco/HPE), firewalls (WatchGuard), storage (NetApp/EMC/Pure Storage), and virtualisation (VMware/KVM).</li>
-            </ul>
-            <h4 class="sub-heading">Key Achievements</h4>
-            <ul>
-                <li>Migrated production systems from CentOS 7 to AlmaLinux 8 with minimal downtime, including legacy application upgrades (e.g., MySQL, Nginx, Git).</li>
-                <li>Rebuilt monitoring stack using ELK, Zabbix, and Grafana, with integrated alerting and logging pipelines.</li>
-                <li>Deployed Uyuni with Salt states for fully automated patching and lifecycle management.</li>
-                <li>Managed containerised deployments across Kubernetes and Docker Swarm platforms.</li>
-                <li>Implemented FreeIPA and Red Hat IDM for identity management and authentication.</li>
-                <li>Managed storage infrastructure and provided capacity for research and public-facing services.</li>
-                <li>Spearheaded adoption of containerisation with Docker and Docker Swarm for streamlined deployments.</li>
-            </ul>
+        <section class="content-box">
+            <p id="tts-content">I did my double Master's in Computer Networks and Security at the **University of Essex** from 2021 to 2022. Before that, I completed my Master's in Computer Science from **Virtual University of Pakistan**. And way back in 2008-2011, I earned my Bachelor's degree in Computer Science from the **University of the Punjab**.</p>
         </section>
 
-        <section class="content-box" id="work-text-harrow">
-            <h3>Harrow College</h3>
-            <span class="job-title">IT Support Engineer / Lecturer (Cyber Security & Big Data) | Feb 2022 – June 2022</span>
-            <ul>
-                <li>Provided IT Support Engineering during my master's, supporting the college ICT infrastructure.</li>
-                <li>Promoted after one month to Lecturer, teaching Level 3 Cyber Security and Big Data with a 95% pass rate.</li>
-            </ul>
-        </section>
-
-        <img src="paragraph7.jpg" onerror="this.onerror=null; this.src='https://placehold.co/700x400/a0a0a0/333?text=PSCA+Image+7';" alt="Punjab Safe Cities Authority Image" class="sub-section-image">
-
-
-        <section class="content-box" id="work-text-psca">
-            <h3>Punjab Safe Cities Authority (Lahore)</h3>
-            <span class="job-title">Deputy Executive Officer (Systems Administration) | Jan 2020 – Jan 2022</span>
-            
-            <p>Managed and modernised a large-scale datacentre environment (600+ servers), leading platform automation, infrastructure monitoring, and security hardening.</p>
-            
-            <h4 class="sub-heading">Key Accomplishments</h4>
-            <ul>
-                <li>Deployed and maintained centralised monitoring and logging solutions (Zabbix, Grafana, ELK, Graylog).</li>
-                <li>Hardened and managed WAN & Local Area Networks across the authority.</li>
-                <li>Automated server provisioning, patching, and backups using Ansible.</li>
-                <li>Integrated Linux infrastructure with Active Directory using SSSD for central authentication.</li>
-                <li>Deployed and maintained Hardware/VMs and storage arrays (Aurora, SAM, AuriS).</li>
-                <li>Mitigated brute-force and DDoS attacks attempts using Fail2Ban and ModEvasive.</li>
-                <li>Managed containerized deployments across Kubernetes and Docker platforms.</li>
-                <li>Provided daily operational oversight to ensure service availability, security compliance, and timely incident response in collaboration with Cyber Assurance and Threat Intelligence teams.</li>
-            </ul>
-        </section>
-
-
-        <section class="content-box" id="work-text-pra">
-            <h3>Punjab Revenue Authority (Lahore)</h3>
-            <span class="job-title">Assistant Director (Systems Administration) | June 2017 – Jan 2020</span>
-            
-            <p>I led the design, deployment, maintenance, and production support of PRA LAN, WAN, MPLS based VPN networks on 08 different sites across Punjab. I led the day-to-day IT operations (i.e., deployment, monitoring, maintenance, security, upgrades and backup of servers, desktop computers, printers, routers, switches, firewall, software, hardware, and operating system).</p>
-            
-            <h4 class="sub-heading">Key Responsibilities</h4>
-            <ul>
-                <li>Managed High Performance & High Availability Clustering of data-processing centers (Both Linux & Windows) running multiple operations (i.e., Apache, IIS, MySQL/SQL) using VMware Virtualisation (ESXi hosts) and Rocky-Cluster.</li>
-                <li>Managed the firewall security for data-centre, monitored by PRA.</li>
-                <li>Led incident response responsible for the detection, response, isolation, and remediation of security incidents, as well as identifying the root cause analysis to ensure prompt action is taken to prevent reoccurrence and strengthen the relevant cyber security controls.</li>
-                <li>Provided comprehensive technical troubleshooting and support across different network and security systems, including (but not limited to): antivirus, firewalls, IDS/IPS, switches, routers, LAN/WAN, servers, MFA, and end points.</li>
-                <li>Analyzed and remediated vulnerabilities discovered in annual penetration tests.</li>
-                <li>Monitored, designed and implemented, managed, and maintained the access control and security permissions for all authorised system users.</li>
-                <li>Provided architectural design and subject matter expertise on technical security requirements for all projects.</li>
-            </ul>
-        </section>
-
-        <section class="content-box" id="work-text-other">
-            <h3 style="margin-bottom: 5px;">Other Experience</h3>
-            <p style="margin-bottom: 5px;"><strong>Federal Govt (Pakistan) – System / Network Administrator</strong> | Aug 2011 – June 2013</p>
-            <p style="margin-bottom: 5px;"><strong>Zahaq Associates (Peshawar) – IT Officer</strong> | June 2013 – June 2017</p>
-            <p style="margin-bottom: 0;"><strong>Road NGO – IT Support Engineer (Volunteer)</strong> | Aug 2011 – Jan 2019</p>
-        </section>
-        
+        <nav class="nav-buttons-bottom">
+            <a href="index.html" class="nav-link home-button">HOME</a>
+        </nav>
     </div>
 
-    <script>
-        const synth = window.speechSynthesis;
-        // Concatenating all main experience text for the TTS reader
-        const workTextOxford = document.getElementById('work-text-oxford').textContent;
-        const workTextHarrow = document.getElementById('work-text-harrow').textContent;
-        const workTextPSCA = document.getElementById('work-text-psca').textContent;
-        const workTextPRA = document.getElementById('work-text-pra').textContent;
-        const workTextOther = document.getElementById('work-text-other').textContent;
-        const fullWorkText = workTextOxford + workTextHarrow + workTextPSCA + workTextPRA + workTextOther; 
-        
-        const playButtonContainer = document.querySelector('.play-button-container');
-        const playIconPath = playButtonContainer.querySelector('.play-icon path:first-child');
-        
-        let utterance = null;
-        let isSpeaking = false;
+    <script type="module">
+        // Global variables provided by the Canvas environment
+        const apiKey = "" 
+        const TTS_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${apiKey}`;
 
-        function toggleRobotVoice() {
-            if (isSpeaking) {
-                // STOP/PAUSE speaking
-                synth.cancel(); 
-                isSpeaking = false;
-                playIconPath.setAttribute('d', 'M8 5v14l11-7z'); // Play icon path
-                playButtonContainer.classList.remove('playing');
-                return;
-            } 
-            
-            if (synth.speaking) {
-                synth.cancel();
+        // --- Utility Functions for Audio Processing ---
+
+        // Converts Base64 string to ArrayBuffer
+        function base64ToArrayBuffer(base64) {
+            const binaryString = atob(base64);
+            const len = binaryString.length;
+            const bytes = new Uint8Array(len);
+            for (let i = 0; i < len; i++) {
+                bytes[i] = binaryString.charCodeAt(i);
+            }
+            return bytes.buffer;
+        }
+
+        // Converts PCM data to a WAV Blob (16-bit signed, mono)
+        function pcmToWav(pcmData, sampleRate) {
+            const buffer = new ArrayBuffer(44 + pcmData.length * 2);
+            const view = new DataView(buffer);
+            let offset = 0;
+
+            function writeString(str) {
+                for (let i = 0; i < str.length; i++) {
+                    view.setUint8(offset + i, str.charCodeAt(i));
+                }
+                offset += str.length;
             }
 
-            // 1. Create a new utterance object using the full text
-            utterance = new SpeechSynthesisUtterance(fullWorkText);
+            function writeUint32(val) {
+                view.setUint32(offset, val, true);
+                offset += 4;
+            }
 
-            // 2. Configure for a robot/male sound 
-            utterance.pitch = 0.5; // Lower pitch for deeper voice
-            utterance.rate = 0.9;  // Slightly slower speed for robot effect
-            
-            const voices = synth.getVoices();
-            let maleVoice = voices.find(voice => 
-                voice.name.includes('Male') || 
-                voice.name.includes('David') || 
-                voice.default && voice.lang.includes('en')
-            );
+            function writeUint16(val) {
+                view.setUint16(offset, val, true);
+                offset += 2;
+            }
 
-            if (maleVoice) {
-                utterance.voice = maleVoice;
-            } 
+            // RIFF chunk
+            writeString('RIFF');
+            writeUint32(36 + pcmData.length * 2); 
+            writeString('WAVE');
 
-            // 3. Set event listeners for state management
-            utterance.onstart = () => {
-                isSpeaking = true;
-                playIconPath.setAttribute('d', 'M6 19h4V5H6v14zm8-14v14h4V5h-4z'); // Pause icon
-                playButtonContainer.classList.add('playing');
-            };
+            // FMT chunk
+            writeString('fmt ');
+            writeUint32(16); // Chunk size
+            writeUint16(1);  // Audio format (PCM)
+            writeUint16(1);  // Number of channels (Mono)
+            writeUint32(sampleRate);
+            writeUint32(sampleRate * 2); // Byte rate (SampleRate * Channels * 2 bytes/sample)
+            writeUint16(2);  // Block align (Channels * 2 bytes/sample)
+            writeUint16(16); // Bits per sample (16-bit)
 
-            utterance.onend = () => {
-                isSpeaking = false;
-                playIconPath.setAttribute('d', 'M8 5v14l11-7z'); // Play icon
-                playButtonContainer.classList.remove('playing');
-            };
+            // DATA chunk
+            writeString('data');
+            writeUint32(pcmData.length * 2);
 
-            // 4. Speak the text
-            synth.speak(utterance);
+            // Write PCM data
+            for (let i = 0; i < pcmData.length; i++) {
+                view.setInt16(offset, pcmData[i], true);
+                offset += 2;
+            }
+
+            return new Blob([buffer], { type: 'audio/wav' });
         }
-        
-        // This is necessary to load the voice list in some browsers
-        synth.onvoiceschanged = () => {
-             // Do nothing here, as we want the user to click the button to start
+
+        // Variable to track if audio is currently playing/loading
+        let isTtsActive = false;
+        let currentAudio = null;
+
+
+        // --- Core TTS Functionality ---
+
+        /**
+         * Toggles the play/stop state and calls the Gemini TTS API.
+         * @param {HTMLElement} element The play-line div element that was clicked.
+         */
+        window.handleTtsClick = async function(element) {
+            const playIconSvgContainer = element.querySelector('.play-icon');
+            const ttsElement = document.getElementById('tts-content');
+            const textToSpeak = ttsElement ? ttsElement.textContent : '';
+            
+            if (isTtsActive) {
+                // STOPPING LOGIC
+                isTtsActive = false;
+                if (currentAudio) {
+                    currentAudio.pause();
+                    currentAudio.currentTime = 0;
+                    currentAudio = null;
+                }
+                playIconSvgContainer.innerHTML = '<path d="M8 5v14l11-7z"/>'; // Reset to Play icon
+                return;
+            }
+            
+            if (!textToSpeak) return;
+
+            // STARTING/LOADING LOGIC
+            isTtsActive = true;
+            playIconSvgContainer.innerHTML = '<circle cx="12" cy="12" r="10" stroke="#f0f0f0" stroke-width="2" fill="none"/>'; // Set to Loading icon (color changed for dark mode)
+
+            const payload = {
+                contents: [{
+                    parts: [{ text: textToSpeak }]
+                }],
+                generationConfig: {
+                    responseModalities: ["AUDIO"],
+                    speechConfig: {
+                        voiceConfig: { prebuiltVoiceConfig: { voiceName: "Charon" } } 
+                    }
+                },
+            };
+
+            const maxRetries = 3;
+            let currentDelay = 1000;
+            let result;
+
+            for (let i = 0; i < maxRetries; i++) {
+                try {
+                    const response = await fetch(TTS_API_URL, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    
+                    result = await response.json();
+                    break; 
+                } catch (error) {
+                    console.error('Error fetching TTS data:', error);
+                    if (i < maxRetries - 1) {
+                        await new Promise(resolve => setTimeout(resolve, currentDelay));
+                        currentDelay *= 2; 
+                    } else {
+                        // Final failure, reset icon and state
+                        playIconSvgContainer.innerHTML = '<path d="M8 5v14l11-7z"/>';
+                        isTtsActive = false;
+                        return;
+                    }
+                }
+            }
+
+            if (!result || !result.candidates || result.candidates.length === 0) {
+                console.error("Failed to get a valid response from the TTS API.");
+                playIconSvgContainer.innerHTML = '<path d="M8 5v14l11-7z"/>';
+                isTtsActive = false;
+                return;
+            }
+
+            const part = result.candidates[0].content?.parts?.[0];
+            const audioData = part?.inlineData?.data;
+            const mimeType = part?.inlineData?.mimeType;
+
+            if (audioData && mimeType && mimeType.startsWith("audio/L16")) {
+                try {
+                    const rateMatch = mimeType.match(/rate=(\d+)/);
+                    const sampleRate = rateMatch ? parseInt(rateMatch[1], 10) : 24000;
+                    
+                    const pcmBuffer = base64ToArrayBuffer(audioData);
+                    const pcm16 = new Int16Array(pcmBuffer); 
+                    
+                    const wavBlob = pcmToWav(pcm16, sampleRate);
+                    const audioUrl = URL.createObjectURL(wavBlob);
+                    
+                    currentAudio = new Audio(audioUrl);
+                    currentAudio.play();
+                    
+                    // Change icon to Stop/Pause icon (two vertical bars)
+                    playIconSvgContainer.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>'; 
+
+                    currentAudio.onended = () => {
+                        // Restore play icon and reset state when audio finishes
+                        playIconSvgContainer.innerHTML = '<path d="M8 5v14l11-7z"/>';
+                        isTtsActive = false;
+                        URL.revokeObjectURL(audioUrl); 
+                    };
+
+                } catch (e) {
+                    console.error("Error processing or playing audio:", e);
+                    playIconSvgContainer.innerHTML = '<path d="M8 5v14l11-7z"/>';
+                    isTtsActive = false;
+                }
+            } else {
+                console.error("Invalid audio data or MIME type returned from API:", mimeType);
+                playIconSvgContainer.innerHTML = '<path d="M8 5v14l11-7z"/>';
+                isTtsActive = false;
+            }
         };
     </script>
 </body>

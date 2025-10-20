@@ -28,136 +28,56 @@
             font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 0;
-            
-            /* >>>>>>>>>>>>> BEGIN BACKGROUND CHANGES <<<<<<<<<<<<< */
-            /* 1. Set the image as the background */
-            background-image: url('background1.jpg');
-            /* 2. Ensure the image covers the entire viewport */
-            background-size: cover;
-            /* 3. Fix the image so it doesn't scroll with the content */
-            background-attachment: fixed;
-            /* 4. Center the image */
-            background-position: center center;
-            /* 5. Apply a heavy blur filter to the background image */
-            filter: blur(10px); 
-            /* 6. To prevent scrollbars and maintain full coverage */
-            overflow: hidden; 
-            /* 7. The original content color is no longer necessary as the background image covers it */
-            /* background-color: #e0e0e0; */
-            /* >>>>>>>>>>>>> END BACKGROUND CHANGES <<<<<<<<<<<<< */
-
+            /* background-color: #e0e0e0; <-- REMOVE this or it will cover the image */
             color: #333;
             line-height: 1.6;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            
+            /* * ----------------------------------------
+            * NEW CODE FOR BACKGROUND IMAGE AND BLUR
+            * ----------------------------------------
+            */
+            
+            /* 1. Set the image, cover the entire viewport, and fix it */
+            background-image: url('background1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
-        
-        /* The container needs to be fixed to an element *outside* the body with the background,
-           but since you're applying the background to body, we must un-blur the container
-           by moving the blur and background image properties into a pseudo-element. */
-        
-        /* Create a pseudo-element for the background and apply the blur/image to it */
+
+        /* * ----------------------------------------
+        * NEW CODE FOR THE BLUR EFFECT
+        * ----------------------------------------
+        */
+        /* Create a pseudo-element for the blur effect */
         body::before {
-            content: "";
-            position: fixed;
+            content: '';
+            position: fixed; /* Fixed position so it stays put */
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             background-image: url('background1.jpg');
             background-size: cover;
-            background-position: center center;
+            background-position: center;
             background-attachment: fixed;
-            filter: blur(10px); /* Adjust the blur strength (e.g., 5px to 20px) */
+            
+            /* Apply the blur filter */
+            filter: blur(10px); /* Adjust the value for desired blur amount */
+            
             z-index: -1; /* Place it behind the content */
         }
         
-        /* Reset the body styles to remove the now-redundant background and blur */
-        body {
-            /* Remove these properties from the main body rule */
-            /* background-image: none; */
-            /* background-size: auto; */
-            /* background-attachment: scroll; */
-            /* background-position: initial; */
-            filter: none;
-            /* background-color: #e0e0e0; */ /* You can keep this as a fallback if the image fails to load */
-        }
-
-        /* Update the body to remove the old background properties if you decide to use the pseudo-element method */
-        /* You must use the pseudo-element method to blur the background *without* blurring the content inside the .container */
-        
-        /* General Body and Container Styles (REVISED for unblurred content) */
-        /*
-        body {
-            font-family: 'Montserrat', sans-serif;
-            margin: 0;
-            padding: 0;
-            color: #333;
-            line-height: 1.6;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-color: #e0e0e0; 
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('background1.jpg');
-            background-size: cover;
-            background-attachment: fixed;
-            background-position: center;
-            filter: blur(10px); 
-            z-index: -1;
-        }
+        /* * Optional: Change container background to semi-transparent white 
+        * to make the text readable over the dark blurred image.
         */
-        
-        /* Since your original code had background-color: #e0e0e0; in body, 
-           and you want the content to be sharp, the cleanest solution is the 
-           one with the pseudo-element, which I'll integrate now. */
-           
-        /* General Body and Container Styles (INTEGRATED CLEAN VERSION) */
-        body {
-            font-family: 'Montserrat', sans-serif;
-            margin: 0;
-            padding: 0;
-            color: #333;
-            line-height: 1.6;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            /* Set a fallback color and remove other background/blur settings */
-            background-color: #e0e0e0; 
-        }
-
-        /* **NEW RULE:** The Blurred Background Layer (The correct way) */
-        body::before {
-            content: '';
-            position: fixed; /* Ensures it covers the whole viewport */
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('background1.jpg'); /* Your image file */
-            background-size: cover;
-            background-attachment: fixed;
-            background-position: center;
-            filter: blur(10px); /* Adjust the blur intensity */
-            z-index: -1; /* Place it behind all content */
-        }
-
         .container {
             width: 90%;
             max-width: 800px;
-            background-color: #f8f8f8;
+            background-color: rgba(255, 255, 255, 0.85); /* Semi-transparent white */
             padding: 30px;
             border-radius: 15px;
             
@@ -170,7 +90,8 @@
             text-align: center;
             opacity: 0; /* Start invisible for the pageLoadFade effect */
         }
-
+        
+        /* The rest of your styles... */
         /* Header and Hero Section */
         .hero-section { margin-bottom: 40px; }
         .hero-section h1 {

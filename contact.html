@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zaheer Abbas - Contact Me</title>
+    <title>Zaheer Abbas - Contact Form</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,9 +21,7 @@
             font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 0;
-            /* ************ MODIFIED: Dark Grey Background ************ */
             background-color: #1e1e1e;
-            /* ************ MODIFIED: Light Text for Contrast ************ */
             color: #f0f0f0;
             line-height: 1.6;
             display: flex;
@@ -62,15 +60,11 @@
         .nav-link {
             display: block;
             padding: 12px 25px;
-            /* ************ MODIFIED: Darker button color ************ */
             background-color: #383838;
-            /* ************ MODIFIED: Light text color ************ */
             color: #f0f0f0;
             text-decoration: none;
             border-radius: 50px;
-            /* ************ MODIFIED: Dark shadow and subtle inset ************ */
             box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            /* ************ MODIFIED: Darker border ************ */
             border: 1px solid #555;
             font-weight: 600;
             font-size: 0.9em;
@@ -81,7 +75,6 @@
         }
 
         .nav-link:hover {
-            /* ************ MODIFIED: Lighter hover background ************ */
             background: linear-gradient(to top, #555555, #777777);
             color: #fff;
             transform: translateY(-2px) scale(1.02);
@@ -102,7 +95,7 @@
 
         /* --- MAIN CONTACT GRID --- */
         .contact-grid {
-            /* ************ MODIFIED: Added a wrapper for the blur effect ************ */
+            /* Modified to be a column layout for the circle + form */
             background-color: rgba(30, 30, 30, 0.7); 
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
@@ -112,24 +105,23 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             
             display: flex;
+            flex-direction: column; /* Changed to column for better flow with the form */
             justify-content: center;
             align-items: center;
             width: 100%;
             max-width: 800px;
-            gap: 50px;
+            gap: 40px; /* Reduced gap since details list is replaced by form */
         }
         
-        /* Left: Contact Circle */
+        /* Left: Contact Circle - kept for design */
         .contact-circle {
             width: 300px;
             height: 300px;
-            /* ************ MODIFIED: Darker circle color ************ */
             background-color: #383838;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            /* ************ MODIFIED: Stronger shadow for dark mode ************ */
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
             flex-shrink: 0;
         }
@@ -137,7 +129,6 @@
         .contact-title {
             font-family: 'Playfair Display', serif;
             font-size: 3.5em; 
-            /* ************ MODIFIED: Light color for Dark Mode ************ */
             color: #ffffff;
             line-height: 1.1;
             font-weight: 700;
@@ -147,45 +138,113 @@
             user-select: none;
         }
         
-        /* Right: Contact Details List */
-        .contact-details {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-            flex-grow: 1;
+        /* ************ NEW: Form Styles ************ */
+        .contact-form {
+            width: 100%;
+            max-width: 500px; /* Constrain the form width */
         }
 
-        .contact-item {
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #ccc;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #555;
+            border-radius: 8px;
+            background-color: #333;
+            color: #f0f0f0;
+            box-sizing: border-box; /* Important for padding/border not to increase overall width */
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #888;
+            outline: none;
+        }
+
+        .submit-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            background-color: #007bff; /* A prominent color for the button */
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.1s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .submit-button:hover {
+            background-color: #0056b3;
+            transform: translateY(-1px);
+        }
+        
+        /* ************ NEW: LinkedIn Item Styling ************ */
+        .linkedin-item {
             display: flex;
             align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .contact-item i {
-            font-size: 1.5em;
-            width: 40px;
-            text-align: center;
-            /* ************ MODIFIED: Light icon color ************ */
-            color: #cccccc;
+        .linkedin-item i {
+            font-size: 2em;
+            color: #0077b5; /* Official LinkedIn Blue */
         }
-
-        .contact-item a,
-        .contact-item span {
+        
+        .linkedin-item a {
             font-family: 'Montserrat', sans-serif; 
-            font-size: 1.3em; 
+            font-size: 1.1em; 
             font-weight: 600; 
-            /* ************ MODIFIED: Light text color ************ */
             color: #f0f0f0;
             text-decoration: none;
             transition: color 0.2s;
-            text-transform: none; 
         }
 
-        .contact-item a:hover {
-            /* ************ MODIFIED: Brighter hover color ************ */
+        .linkedin-item a:hover {
             color: #ffffff;
+            text-decoration: underline;
         }
 
         /* --- RESPONSIVE ADJUSTMENTS --- */
+        @media (min-width: 769px) {
+            /* Re-establishing side-by-side layout for large screens with the form */
+            .contact-grid {
+                flex-direction: row; 
+                align-items: flex-start;
+                gap: 50px;
+            }
+            .contact-form {
+                max-width: none; /* Allow form to take available space */
+            }
+        }
+        
         @media (max-width: 768px) {
             .nav-buttons-top {
                 gap: 8px;
@@ -206,10 +265,6 @@
             .contact-title {
                 font-size: 3em;
             }
-            .contact-item a,
-            .contact-item span {
-                font-size: 1.1em;
-            }
         }
     </style>
 </head>
@@ -228,30 +283,40 @@
                 <h2 class="contact-title">CONTACT<br>ME</h2>
             </div>
             
-            <div class="contact-details">
+            <form class="contact-form" action="YOUR_SERVER_ENDPOINT" method="POST">
+                <p style="font-size: 1.1em; margin-bottom: 25px;">
+                    Please use the form below to send a message. I'll get back to you as soon as possible!
+                </p>
                 
-                <div class="contact-item">
-                    <i class="fa fa-phone-alt"></i>
-                    <a href="tel:07405511766">0740 551 1766</a>
+                <div class="form-group">
+                    <label for="name">Your Name:</label>
+                    <input type="text" id="name" name="name" required placeholder="Enter your full name">
                 </div>
 
-                <div class="contact-item">
-                    <i class="fa fa-envelope"></i>
-                    <a href="mailto:ZAHEER.PSG@GMAIL.COM">zaheer.psg@gmail.com</a>
+                <div class="form-group">
+                    <label for="email">Your Email:</label>
+                    <input type="email" id="email" name="email" required placeholder="name@example.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Subject (Optional):</label>
+                    <input type="text" id="subject" name="subject" placeholder="e.g., Job Inquiry, Collaboration">
                 </div>
 
-                <div class="contact-item">
-                    <i class="fa fa-home"></i>
-                    <span>12 Ash Cres, Harwell (OX11 0FJ)</span>
+                <div class="form-group">
+                    <label for="message">Your Message:</label>
+                    <textarea id="message" name="message" required placeholder="Type your message here..."></textarea>
                 </div>
 
-                <div class="contact-item">
+                <button type="submit" class="submit-button">Send Message</button>
+                
+                <div class="linkedin-item">
                     <i class="fab fa-linkedin"></i>
-                    <a href="https://www.linkedin.com/in/zaheerabbas52165640" target="_blank">linkedin.com/in/zaheerabbas52165640</a>
+                    <a href="https://www.linkedin.com/in/zaheer-abbas-52165640" target="_blank">Connect on LinkedIn</a>
                 </div>
-
-            </div>
-        </section>
+                
+            </form>
+            </section>
 
         <nav class="nav-buttons-bottom">
             <a href="index.html" class="nav-link home-button">HOME</a>

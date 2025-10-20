@@ -137,7 +137,7 @@
             user-select: none;
         }
         
-        /* ************ NEW: DIRECT CONTACT SECTION STYLES ************ */
+        /* ************ NEW/MODIFIED: DIRECT CONTACT SECTION STYLES ************ */
         .direct-contact-area {
             width: 100%;
             max-width: 500px; 
@@ -147,10 +147,22 @@
             align-items: center;
         }
         
+        /* NEW: Card style for text */
+        .contact-card {
+            background-color: #333333; /* Darker gray background for the card */
+            border: 1px solid #444;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
         .contact-message {
             font-size: 1.1em; 
-            margin-bottom: 30px;
-            color: #ccc;
+            color: #e0e0e0;
+            margin: 0; /* Remove default paragraph margins */
         }
 
         .linkedin-button {
@@ -162,7 +174,7 @@
             padding: 15px;
             border: none;
             border-radius: 8px;
-            /* ************ MODIFIED: Changed color to Dark Gray ************ */
+            /* Gray color for the button */
             background-color: #555555; 
             color: #ffffff;
             font-weight: 700;
@@ -172,18 +184,19 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            text-decoration: none; /* Make it look like a button */
+            text-decoration: none; 
             gap: 10px;
         }
 
         .linkedin-button:hover {
-            /* ************ MODIFIED: Adjusted hover color for Dark Gray ************ */
             background-color: #777777;
             transform: translateY(-2px);
             box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
         }
 
         .linkedin-button i {
+            /* Kept LinkedIn icon blue for brand recognition */
+            color: #0077B5; 
             font-size: 1.4em;
         }
 
@@ -239,9 +252,12 @@
             </div>
             
             <div class="direct-contact-area">
-                <p class="contact-message">
-                    The best way to reach me directly for job inquiries, collaboration, or general questions is through LinkedIn messaging.
-                </p>
+                
+                <div class="contact-card">
+                    <p class="contact-message">
+                        The best way to reach me directly for job inquiries, collaboration, or general questions is through **LinkedIn messaging**.
+                    </p>
+                </div>
                 
                 <a href="https://www.linkedin.com/in/zaheer-abbas-52165640" 
                    target="_blank" 
@@ -250,8 +266,9 @@
                     Send Message on LinkedIn
                 </a>
                 
-                </div>
-            </section>
+            </div>
+            
+        </section>
 
         <nav class="nav-buttons-bottom">
             <a href="index.html" class="nav-link home-button">HOME</a>

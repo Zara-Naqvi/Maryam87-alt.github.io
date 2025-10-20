@@ -15,8 +15,10 @@
             font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #e0e0e0;
-            color: #333;
+            /* MODIFICATION 1: Dark Grey Background */
+            background-color: #333; 
+            /* MODIFICATION 2: Light Text for contrast */
+            color: #eee;
             line-height: 1.6;
             display: flex;
             justify-content: center;
@@ -27,23 +29,26 @@
         .container {
             width: 90%;
             max-width: 900px;
-            background-color: #f8f8f8;
+            /* MODIFICATION 3: Container Background */
+            background-color: #444; 
             padding: 30px;
             border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Adjust shadow for dark theme */
             text-align: center;
         }
 
         .header-content h1 {
             font-family: 'Playfair Display', serif;
             font-size: 2.5em;
-            color: #1a1a1a;
+            /* MODIFICATION 4: Header Text Color */
+            color: #f0f0f0;
             margin-bottom: 5px;
         }
 
         .header-content p {
             font-size: 1.1em;
-            color: #555;
+            /* MODIFICATION 5: Subheader Text Color */
+            color: #ccc;
             margin-bottom: 30px;
         }
         
@@ -52,7 +57,8 @@
             display: inline-block;
             padding: 10px 25px;
             margin-bottom: 25px;
-            background-color: #777777;
+            /* MODIFICATION 6: Back Button Color */
+            background-color: #666666;
             color: #fff;
             text-decoration: none;
             border-radius: 50px;
@@ -60,7 +66,7 @@
             transition: background-color 0.3s ease, transform 0.2s ease;
         }
         .back-button:hover {
-            background-color: #555555;
+            background-color: #888888;
             transform: translateY(-1px);
         }
 
@@ -82,20 +88,22 @@
             cursor: pointer;
             transition: background-color 0.2s, color 0.2s, transform 0.1s;
             text-transform: capitalize;
-            background-color: #a0a0a0;
-            color: #333;
+            /* MODIFICATION 7: Filter Button Base Color */
+            background-color: #666;
+            color: #eee;
         }
 
         .filter-btn:hover {
-            background-color: #888888;
+            background-color: #777;
             color: #fff;
         }
 
         .filter-btn.active {
-            background-color: #555555; /* Darker to show active state */
+            /* MODIFICATION 8: Filter Button Active Color */
+            background-color: #222; 
             color: #ffffff;
             transform: scale(1.05);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
         }
 
         /* Project Grid Styles */
@@ -107,27 +115,31 @@
         }
 
         .project-card {
-            background-color: #cccccc;
+            /* MODIFICATION 9: Project Card Background */
+            background-color: #555;
             border-radius: 10px;
             padding: 20px;
             text-align: left;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.4s ease;
         }
 
         .project-card h2 {
             font-family: 'Playfair Display', serif;
             font-size: 1.5em;
-            color: #222;
+            /* MODIFICATION 10: Card Title Color */
+            color: #fff;
             margin-top: 0;
-            border-bottom: 2px solid #a0a0a0;
+            /* MODIFICATION 11: Card Separator Color */
+            border-bottom: 2px solid #777;
             padding-bottom: 10px;
             margin-bottom: 10px;
         }
 
         .project-card p {
             font-size: 0.95em;
-            color: #333;
+            /* MODIFICATION 12: Card Text Color */
+            color: #e0e0e0;
             margin-bottom: 15px;
         }
 
@@ -141,8 +153,9 @@
         }
 
         .tech-list li {
-            background-color: #a0a0a0;
-            color: #1a1a1a;
+            /* MODIFICATION 13: Tech Tag Color */
+            background-color: #777;
+            color: #fff;
             padding: 5px 10px;
             border-radius: 5px;
             font-size: 0.8em;
@@ -166,15 +179,11 @@
             <p>Highlights of strategic initiatives, technical migrations, and resilience projects across cloud and on-premises environments.</p>
         </header>
         
-        <!-- Filter Buttons Container -->
         <div id="filterContainer" class="filter-buttons">
-            <!-- Buttons will be generated here by JavaScript -->
-        </div>
+            </div>
 
-        <!-- Project Grid Container -->
         <section id="projectGrid" class="project-grid">
-            <!-- Project Cards will be rendered here by JavaScript -->
-        </section>
+            </section>
         
     </div>
 
@@ -254,7 +263,7 @@
                     grid.appendChild(card);
                 });
             } else {
-                grid.innerHTML = '<p style="grid-column: 1 / -1; color: #555;">No projects found for this category.</p>';
+                grid.innerHTML = '<p style="grid-column: 1 / -1; color: #ccc;">No projects found for this category.</p>';
             }
 
             // Update active state of filter buttons

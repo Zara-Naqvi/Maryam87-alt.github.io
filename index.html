@@ -100,6 +100,24 @@
         }
         
         .play-button-container.playing .play-icon { fill: #dc3545; }
+        .play-button-container.loading { pointer-events: none; opacity: 0.7; }
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #555;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            animation: spin 1s linear infinite;
+            display: none;
+            position: absolute;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .play-button-container.loading .play-icon { display: none; }
+        .play-button-container.loading .spinner { display: block; }
+
 
         .profile-pic {
             width: 150px;
@@ -155,8 +173,9 @@
         }
 
         .nav-buttons {
+            /* Adjusted grid template to fit the new button */
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); 
             gap: 15px;
             margin-bottom: 30px;
         }
@@ -169,7 +188,7 @@
             text-decoration: none;
             border-radius: 50px;
             font-weight: 600;
-            font-size: 0.85em;
+            font-size: 0.8em; /* Slightly smaller to fit 5 buttons */
             transition: background-color 0.3s ease, transform 0.2s ease;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
             text-transform: uppercase;
@@ -194,7 +213,9 @@
             .hero-section h1 { font-size: 2.5em; }
             .profile-area { flex-direction: column; }
             .play-button-container { margin-right: 0; margin-bottom: 20px; }
-            .nav-buttons { grid-template-columns: 1fr; }
+            .nav-buttons { 
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Adjusted grid for mobile */
+            }
         }
     </style>
 </head>
@@ -204,8 +225,12 @@
         <header class="hero-section">
             <h1>Zaheer Abbas</h1>
             <div class="profile-area">
-                <div class="play-button-container" onclick="toggleRobotVoice()">
-                    <svg class="play-icon" viewBox="0 0 24 24">
+                <!-- TTS Icon Container -->
+                <div class="play-button-container" id="playButton" onclick="handleTtsClick()">
+                    <!-- Spinner for loading state -->
+                    <div class="spinner"></div> 
+                    <!-- Play/Pause Icon -->
+                    <svg class="play-icon" viewBox="0 0 24 24" id="playIconSvg">
                         <path d="M8 5v14l11-7z"/>
                         <path d="M0 0h24v24H0z" fill="none"/>
                     </svg>
@@ -222,7 +247,9 @@
 
         <section class="navigation-section">
             <h3>Know more about me</h3>
+            <!-- UPDATED Navigation Buttons with Project Showcase -->
             <div class="nav-buttons">
+                <a href="projects_showcase.html" class="nav-button">PROJECT SHOWCASE</a>
                 <a href="skills.html" class="nav-button">KEY SKILLS & TOOLS</a>
                 <a href="certifications.html" class="nav-button">CERTIFICATIONS & TRAININGS</a>
                 <a href="experience.html" class="nav-button">WORK EXPERIENCE</a>
@@ -233,65 +260,189 @@
     </div>
 
     <script>
-        const synth = window.speechSynthesis;
-        const bioText = document.getElementById('bio-text').textContent;
-        const playButtonContainer = document.querySelector('.play-button-container');
-        const playIconPath = playButtonContainer.querySelector('.play-icon path:first-child');
-        
-        let utterance = null;
-        let isSpeaking = false;
+        const API_KEY = ""; // Using empty string for Canvas runtime injection
+        const TTS_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${API_KEY}`;
 
-        function toggleRobotVoice() {
-            if (isSpeaking) {
-                // STOP/PAUSE speaking
-                synth.cancel(); 
-                isSpeaking = false;
-                playIconPath.setAttribute('d', 'M8 5v14l11-7z'); // Play icon path
-                playButtonContainer.classList.remove('playing');
-                return;
-            } 
-            
-            if (synth.speaking) {
-                synth.cancel();
+        const playButtonContainer = document.getElementById('playButton');
+        const playIconSvg = document.getElementById('playIconSvg');
+        const bioText = document.getElementById('bio-text').textContent.trim();
+        let audioContext;
+        let audioSource;
+        let isPlaying = false;
+
+        // Utility function to convert base64 to ArrayBuffer
+        function base64ToArrayBuffer(base64) {
+            const binaryString = atob(base64);
+            const len = binaryString.length;
+            const bytes = new Uint8Array(len);
+            for (let i = 0; i < len; i++) {
+                bytes[i] = binaryString.charCodeAt(i);
+            }
+            return bytes.buffer;
+        }
+
+        // Utility function to convert PCM audio data to WAV format
+        function pcmToWav(pcmData, sampleRate) {
+            const numChannels = 1;
+            const bytesPerSample = 2; // 16-bit PCM
+            const dataLength = pcmData.byteLength;
+
+            const buffer = new ArrayBuffer(44 + dataLength);
+            const view = new DataView(buffer);
+
+            // RIFF chunk descriptor
+            writeString(view, 0, 'RIFF'); // ChunkID
+            view.setUint32(4, 36 + dataLength, true); // ChunkSize
+            writeString(view, 8, 'WAVE'); // Format
+
+            // FMT sub-chunk
+            writeString(view, 12, 'fmt '); // Subchunk1ID
+            view.setUint32(16, 16, true); // Subchunk1Size (16 for PCM)
+            view.setUint16(20, 1, true); // AudioFormat (1 for PCM)
+            view.setUint16(22, numChannels, true); // NumChannels
+            view.setUint32(24, sampleRate, true); // SampleRate
+            view.setUint32(28, sampleRate * numChannels * bytesPerSample, true); // ByteRate
+            view.setUint16(32, numChannels * bytesPerSample, true); // BlockAlign
+            view.setUint16(34, 16, true); // BitsPerSample (16-bit)
+
+            // DATA sub-chunk
+            writeString(view, 36, 'data'); // Subchunk2ID
+            view.setUint32(40, dataLength, true); // Subchunk2Size
+
+            // Write PCM data
+            const pcmView = new Int16Array(pcmData);
+            for (let i = 0; i < pcmView.length; i++) {
+                view.setInt16(44 + i * 2, pcmView[i], true);
             }
 
-            // 1. Create a new utterance object
-            utterance = new SpeechSynthesisUtterance(bioText);
-
-            // 2. Configure for a robot/male sound 
-            utterance.pitch = 0.5; // Lower pitch for deeper voice
-            utterance.rate = 0.9;  // Slightly slower speed for robot effect
-            
-            const voices = synth.getVoices();
-            let maleVoice = voices.find(voice => 
-                voice.name.includes('Male') || 
-                voice.name.includes('David') || 
-                voice.default && voice.lang.includes('en')
-            );
-
-            if (maleVoice) {
-                utterance.voice = maleVoice;
-            } 
-
-            // 3. Set event listeners for state management
-            utterance.onstart = () => {
-                isSpeaking = true;
-                playIconPath.setAttribute('d', 'M6 19h4V5H6v14zm8-14v14h4V5h-4z'); // Pause icon
-                playButtonContainer.classList.add('playing');
-            };
-
-            utterance.onend = () => {
-                isSpeaking = false;
-                playIconPath.setAttribute('d', 'M8 5v14l11-7z'); // Play icon
-                playButtonContainer.classList.remove('playing');
-            };
-
-            // 4. Speak the text
-            synth.speak(utterance);
+            return new Blob([buffer], { type: 'audio/wav' });
         }
-        
-        // This is necessary to load the voice list in some browsers
-        synth.onvoiceschanged = toggleRobotVoice;
+
+        // Helper function for writing strings to DataView
+        function writeString(view, offset, string) {
+            for (let i = 0; i < string.length; i++) {
+                view.setUint8(offset + i, string.charCodeAt(i));
+            }
+        }
+
+        // Function to toggle play/pause state
+        function togglePlayPause(playing) {
+            isPlaying = playing;
+            if (playing) {
+                // Change to Pause icon (M6 19h4V5H6v14zm8-14v14h4V5h-4z)
+                playIconSvg.querySelector('path:first-child').setAttribute('d', 'M6 19h4V5H6v14zm8-14v14h4V5h-4z');
+                playButtonContainer.classList.add('playing');
+            } else {
+                // Change to Play icon (M8 5v14l11-7z)
+                playIconSvg.querySelector('path:first-child').setAttribute('d', 'M8 5v14l11-7z');
+                playButtonContainer.classList.remove('playing');
+            }
+        }
+
+        // Exponential backoff retry logic
+        async function fetchWithRetry(url, options, retries = 3, delay = 1000) {
+            for (let i = 0; i < retries; i++) {
+                try {
+                    const response = await fetch(url, options);
+                    if (!response.ok) {
+                        const errorBody = await response.json();
+                        throw new Error(`API call failed with status ${response.status}: ${JSON.stringify(errorBody)}`);
+                    }
+                    return response;
+                } catch (error) {
+                    if (i === retries - 1) throw error; // Re-throw if last attempt
+                    await new Promise(resolve => setTimeout(resolve, delay * Math.pow(2, i)));
+                }
+            }
+        }
+
+        // Main function to handle TTS click event
+        async function handleTtsClick() {
+            if (isPlaying && audioSource) {
+                audioSource.stop();
+                togglePlayPause(false);
+                return;
+            }
+
+            // If not playing, start generation/playback
+            playButtonContainer.classList.add('loading');
+
+            try {
+                const payload = {
+                    contents: [{
+                        parts: [{ text: bioText }]
+                    }],
+                    generationConfig: {
+                        responseModalities: ["AUDIO"],
+                        speechConfig: {
+                            // Using a consistent, firm voice for professional bio
+                            voiceConfig: { prebuiltVoiceConfig: { voiceName: "Kore" } } 
+                        }
+                    },
+                    model: "gemini-2.5-flash-preview-tts"
+                };
+
+                const response = await fetchWithRetry(TTS_API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+                const part = result?.candidates?.[0]?.content?.parts?.[0];
+                const audioData = part?.inlineData?.data;
+                const mimeType = part?.inlineData?.mimeType;
+
+                if (!audioData || !mimeType) {
+                    throw new Error("TTS API returned no audio data.");
+                }
+
+                // Extract sample rate from MIME type (e.g., audio/L16;rate=24000)
+                const rateMatch = mimeType.match(/rate=(\d+)/);
+                const sampleRate = rateMatch ? parseInt(rateMatch[1], 10) : 24000; // Default to 24000 if not found
+
+                const pcmData = base64ToArrayBuffer(audioData);
+                const wavBlob = pcmToWav(pcmData, sampleRate);
+                const audioUrl = URL.createObjectURL(wavBlob);
+
+                if (!audioContext) {
+                    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                }
+
+                // Stop any existing playback before starting a new one
+                if (audioSource) {
+                    audioSource.stop();
+                }
+                
+                // Play audio using the standard Audio element for easier control
+                const audio = new Audio(audioUrl);
+
+                audio.onplay = () => {
+                    playButtonContainer.classList.remove('loading');
+                    togglePlayPause(true);
+                };
+                
+                audio.onended = () => {
+                    togglePlayPause(false);
+                    URL.revokeObjectURL(audioUrl); // Clean up the Blob URL
+                };
+                
+                audio.onerror = () => {
+                    console.error('Audio playback failed.');
+                    togglePlayPause(false);
+                    URL.revokeObjectURL(audioUrl);
+                };
+
+                // Store audio element to control pause/stop
+                audioSource = audio; 
+                audio.play();
+
+            } catch (error) {
+                console.error("Error during TTS process:", error);
+                playButtonContainer.classList.remove('loading');
+                togglePlayPause(false);
+            }
+        }
     </script>
 </body>
 </html>

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zaheer Abbas - Work Experience</title>
+    
+    <!-- LINK GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- EMBEDDED CSS STYLES AND MAGICAL EFFECTS -->
+    <style>
+        /* CSS Keyframes for Page Load Effect: Blur-to-HD, slow motion (2 seconds) */
+        @keyframes pageLoadFade {
+            0% { opacity: 0; filter: blur(5px); transform: scale(0.98); }
+            100% { opacity: 1; filter: blur(0); transform: scale(1); }
+        }
+
+        /* CSS Keyframes for the Subtle Container Glow */
+        @keyframes subtleGlow {
+            0% { box-shadow: 0 0 10px rgba(180, 180, 180, 0.2); }
+            50% { box-shadow: 0 0 20px rgba(180, 180, 180, 0.4); }
+            100% { box-shadow: 0 0 10px rgba(180, 180, 180, 0.2); }
+        }
+
+        /* General Body and Container Styles */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e0e0e0;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .main-wrapper {
+            width: 90%;
+            max-width: 1000px;
+            padding: 50px 0;
+            animation: pageLoadFade 2s ease-out forwards;
+            opacity: 0;
+        }
+
+        /* --- TOP NAVIGATION BAR STYLING (NEW) --- */
+        .nav-buttons-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap; 
+            gap: 20px;
+            width: 100%;
+            max-width: 950px;
+            margin: 0 auto 50px auto; /* Margin at bottom to separate from header */
+        }
+
+        .nav-link {
+            flex-basis: auto; 
+            display: block;
+            padding: 15px 30px;
+            background-color: #a0a0a0;
+            color: #1a1a1a;
+            text-decoration: none;
+            border-radius: 50px; 
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            border: 1px solid #999;
+            font-weight: 600;
+            font-size: 0.9em;
+            text-align: center;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: linear-gradient(to top, #888888, #b0b0b0);
+            color: #fff;
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+        }
+
+        /* --- Header Section Layout (Title, Image) --- */
+        .header-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Two main columns */
+            gap: 20px;
+            align-items: center;
+            margin-bottom: 40px;
+            padding: 0 10px; /* Padding for overall structure */
+        }
+
+        .left-header {
+            text-align: left;
+            padding-left: 0;
+        }
+        
+        /* Title Styling */
+        .main-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4em; 
+            color: #1a1a1a;
+            line-height: 1.1;
+            margin: 20px 0 10px 0;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        
+        /* Robot Voice Icon (Matching Homepage Style) */
+        .play-button-container {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            margin: 10px 0;
+            transition: transform 0.2s ease-in-out;
+            position: relative;
+        }
+        .play-icon {
+            width: 35px;
+            height: 35px;
+            fill: #555;
+            transition: fill 0.2s;
+            position: absolute;
+            left: 0;
+        }
+        .play-line {
+            width: 80px;
+            height: 2px;
+            background-color: #555;
+            margin-left: 10px;
+            transform: translateX(20px);
+        }
+        .play-button-container.playing .play-icon { fill: #dc3545; }
+
+
+        /* Right Header Image */
+        .right-header {
+            text-align: right;
+        }
+        .header-image {
+            width: 100%;
+            max-width: 450px;
+            height: auto;
+            border-radius: 20px;
+            object-fit: cover;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        /* --- Content Box Styling (REDUCED WIDTH) --- */
+        .content-box {
+            background-color: #cccccc; 
+            width: 95%; /* Fluid width */
+            max-width: 700px; /* Reduced to match homepage paragraph width */
+            margin: 0 auto;
+            padding: 30px 40px;
+            border-radius: 20px; 
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            animation: subtleGlow 4s infinite alternate 2s;
+            text-align: left;
+        }
+
+        .content-box p, .content-box ul {
+            font-size: 1.0em;
+            line-height: 1.7;
+            color: #222;
+            margin-bottom: 20px;
+        }
+
+        .content-box h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.2em;
+            color: #1a1a1a;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+        
+        /* List Styling */
+        .content-box ul {
+            list-style: none;
+            padding-left: 10px;
+        }
+        .content-box ul li {
+            position: relative;
+            margin-bottom: 8px;
+            padding-left: 20px;
+        }
+        .content-box ul li:before {
+            content: '–'; 
+            position: absolute;
+            left: 0;
+            color: #444;
+            font-weight: bold;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .nav-buttons-grid {
+                margin-bottom: 30px;
+                gap: 10px;
+            }
+            .nav-link {
+                padding: 10px 15px;
+            }
+            .header-grid {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            .left-header {
+                order: 2; 
+                text-align: center;
+            }
+            .right-header {
+                order: 1; 
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            .header-image {
+                max-width: 90%;
+            }
+            .main-title {
+                font-size: 3em;
+            }
+            .content-box {
+                padding: 20px;
+                max-width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-wrapper">
+        
+        <!-- NAVIGATION BAR AT THE TOP -->
+        <nav class="nav-buttons-grid">
+            <a href="index.html" class="nav-link">HOME</a>
+            <a href="skills.html" class="nav-link">KEY SKILLS & TRAINING</a>
+            <a href="certifications.html" class="nav-link">CERTIFICATIONS & TRAININGS</a>
+            <a href="education.html" class="nav-link">EDUCATION</a>
+            <a href="contact.html" class="nav-link">CONTACT ME</a>
+        </nav>
+
+        <header class="header-grid">
+            <div class="left-header">
+                <!-- Main Title -->
+                <h1 class="main-title">WORK<br>EXPERIENCE</h1>
+
+                <!-- Robot Voice Player -->
+                <div class="play-button-container" onclick="toggleRobotVoice()">
+                    <svg class="play-icon" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z"/>
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                    </svg>
+                    <div class="play-line"></div>
+                </div>
+            </div>
+            
+            <div class="right-header">
+                <!-- Image from Design -->
+                <img src="paragraph6.jpg" onerror="this.onerror=null; this.src='https://placehold.co/450x300/a0a0a0/333?text=Work+Image';" alt="Workplace Image" class="header-image">
+            </div>
+        </header>
+
+        <!-- Main Content Box (Now smaller) -->
+        <section class="content-box" id="work-text">
+            <p>I'm Deputy IT Manager for Infrastructure at the University of Oxford's Computer Science Department. I've been in this role since August 2022, and my days are filled with excitement. I lead infrastructure strategy and operations across two datacenters to ensure our systems are running smoothly. I manage a talented team of Linux and Windows system administrators, and we've achieved some amazing things together.</p>
+
+            <h4 class="sub-heading">A bit about my background</h4>
+            <p>Before joining Oxford, I worked at Harrow College as an IT Support Engineer and Lecturer, where I taught Level 3 Cyber Security and Big Data with a 95% pass rate. Prior to that, I was Deputy Executive Officer at Punjab Safe Cities Authority, where I managed a large-scale datacenter environment and implemented cutting-edge technologies.</p>
+
+            <h4 class="sub-heading">Some of my key achievements</h4>
+            <ul>
+                <li>Migrated production systems from CentOS 7 to AlmaLinux 8 with minimal downtime</li>
+                <li>Rebuilt monitoring stack using ELK, Zabbix, and Grafana</li>
+                <li>Deployed Uyuni with Salt states for automated patching and lifecycle management</li>
+                <li>Implemented FreeIPA and Red Hat IDM for identity management and authentication</li>
+            </ul>
+
+            <h4 class="sub-heading">What I do</h4>
+            <p>My role involves leading infrastructure strategy, managing a team, and overseeing our annual infrastructure budget of £300k–£500k. I'm also responsible for drafting our cyber security strategy and acting as a technical lead for core infrastructure.</p>
+        </section>
+    </div>
+
+    <!-- EMBEDDED JAVASCRIPT FOR ROBOT VOICE (TTS) -->
+    <script>
+        // Note: The onerror attribute on the image handles the case where paragraph6.jpg might not be found.
+        const synth = window.speechSynthesis;
+        const workText = document.getElementById('work-text').textContent;
+        const playButtonContainer = document.querySelector('.play-button-container');
+        const playIconPath = playButtonContainer.querySelector('.play-icon path:first-child');
+        
+        let utterance = null;
+        let isSpeaking = false;
+
+        function toggleRobotVoice() {
+            if (isSpeaking) {
+                // STOP/PAUSE speaking
+                synth.cancel(); 
+                isSpeaking = false;
+                playIconPath.setAttribute('d', 'M8 5v14l11-7z'); // Play icon path
+                playButtonContainer.classList.remove('playing');
+                return;
+            } 
+            
+            if (synth.speaking) {
+                synth.cancel();
+            }
+
+            // 1. Create a new utterance object
+            utterance = new SpeechSynthesisUtterance(workText);
+
+            // 2. Configure for a robot/male sound 
+            utterance.pitch = 0.5; // Lower pitch for deeper voice
+            utterance.rate = 0.9;  // Slightly slower speed for robot effect
+            
+            const voices = synth.getVoices();
+            let maleVoice = voices.find(voice => 
+                voice.name.includes('Male') || 
+                voice.name.includes('David') || 
+                voice.default && voice.lang.includes('en')
+            );
+
+            if (maleVoice) {
+                utterance.voice = maleVoice;
+            } 
+
+            // 3. Set event listeners for state management
+            utterance.onstart = () => {
+                isSpeaking = true;
+                playIconPath.setAttribute('d', 'M6 19h4V5H6v14zm8-14v14h4V5h-4z'); // Pause icon
+                playButtonContainer.classList.add('playing');
+            };
+
+            utterance.onend = () => {
+                isSpeaking = false;
+                playIconPath.setAttribute('d', 'M8 5v14l11-7z'); // Play icon
+                playButtonContainer.classList.remove('playing');
+            };
+
+            // 4. Speak the text
+            synth.speak(utterance);
+        }
+        
+        // This is necessary to load the voice list in some browsers
+        synth.onvoiceschanged = toggleRobotVoice;
+    </script>
+</body>
+</html>

@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zaheer Abbas - Education</title>
+    
+    <!-- LINK GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Using Playfair Display for titles (italic for this page) and Montserrat for body text -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CORE STYLES AND ANIMATIONS --- */
+        @keyframes pageLoadFade {
+            0% { opacity: 0; filter: blur(5px); transform: scale(0.98); }
+            100% { opacity: 1; filter: blur(0); transform: scale(1); }
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e0e0e0;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding: 50px 20px;
+            box-sizing: border-box;
+        }
+
+        .main-wrapper {
+            width: 100%;
+            max-width: 1000px;
+            animation: pageLoadFade 2s ease-out forwards;
+            opacity: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* --- NAVIGATION BUTTONS (Top Bar) --- */
+        .nav-buttons-top {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 50px;
+            width: 100%;
+        }
+
+        .nav-buttons-bottom {
+            margin-top: 50px;
+            margin-bottom: 20px;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 12px 25px;
+            background-color: #a0a0a0;
+            color: #1a1a1a;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            border: 1px solid #999;
+            font-weight: 600;
+            font-size: 0.9em;
+            text-align: center;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-link:hover {
+            background: linear-gradient(to top, #888888, #b0b0b0);
+            color: #fff;
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Active page style (Education) */
+        .nav-buttons-top .nav-link:nth-child(5) { 
+            background: #555555;
+            color: #ffffff;
+            box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.3);
+            pointer-events: none;
+        }
+        
+        /* The main HOME button at the bottom uses the standard link style */
+        .home-button {
+            padding: 12px 50px;
+        }
+
+        /* --- HEADER SECTION (Title, Play Icon, and Image) --- */
+        .header-grid {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center; /* Aligns title and image vertically centered */
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 40px;
+            padding: 0 10px;
+        }
+
+        .left-header {
+            flex-grow: 1;
+            padding-right: 20px;
+        }
+        
+        .main-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 5em; 
+            color: #1a1a1a;
+            line-height: 1.1;
+            margin: 0;
+            font-weight: 700;
+            font-style: italic; /* Title is italic in the design */
+            text-transform: uppercase;
+        }
+
+        .play-line {
+            display: flex;
+            align-items: center;
+            margin-top: 15px; 
+            cursor: pointer;
+        }
+
+        .play-line svg {
+            width: 20px;
+            height: 20px;
+            fill: #333;
+            margin-right: 10px;
+            transition: transform 0.2s ease;
+        }
+
+        .play-line:hover svg {
+            transform: scale(1.1);
+        }
+
+        .play-line .line {
+            height: 2px;
+            width: 250px; /* Longer line for design match */
+            background-color: #333;
+            transition: background-color 0.2s ease;
+        }
+
+        .right-header {
+            flex-shrink: 0;
+            width: 200px; 
+            height: 200px;
+            overflow: hidden;
+            border-radius: 20px;
+        }
+
+        .header-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+
+        /* --- MAIN CONTENT BOX --- */
+        .content-box {
+            background-color: #cccccc;
+            width: 100%;
+            max-width: 750px; 
+            margin: 0 auto;
+            padding: 35px 50px;
+            border-radius: 50px; 
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            text-align: center; 
+        }
+
+        .content-box p {
+            font-size: 1.1em;
+            line-height: 1.7;
+            color: #1a1a1a;
+            font-weight: 600; 
+            margin: 0;
+        }
+        
+        /* --- RESPONSIVE ADJUSTMENTS --- */
+        @media (max-width: 768px) {
+            .nav-buttons-top {
+                gap: 8px;
+            }
+            .nav-link {
+                padding: 10px 12px;
+                font-size: 0.8em;
+            }
+            .header-grid {
+                flex-direction: column; 
+                align-items: center;
+                text-align: center;
+                gap: 20px;
+            }
+            .left-header {
+                order: 2;
+                width: 100%;
+                padding-right: 0;
+            }
+            .right-header {
+                order: 1;
+                width: 150px; 
+                height: 150px;
+            }
+            .main-title {
+                font-size: 3em;
+            }
+            .content-box {
+                padding: 25px 30px;
+                border-radius: 30px;
+            }
+            .play-line {
+                justify-content: center;
+                margin-top: 10px;
+            }
+            .play-line .line {
+                width: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-wrapper">
+        
+        <!-- NAVIGATION BAR AT THE TOP (Education is not linked as it's the current page) -->
+        <nav class="nav-buttons-top">
+            <a href="skills.html" class="nav-link">KEY SKILLS & TRAINING</a>
+            <a href="certifications.html" class="nav-link">CERTIFICATIONS & TRAINING</a>
+            <a href="experience.html" class="nav-link">WORK EXPERIENCE</a>
+            <a href="contact.html" class="nav-link">CONTACT ME</a>
+        </nav>
+
+        <header class="header-grid">
+            <div class="left-header">
+                <!-- Main Title: EDUCATION -->
+                <h1 class="main-title">EDUCATION</h1>
+
+                <!-- Play Icon and Line -->
+                <div class="play-line" onclick="handleTtsClick(this)">
+                    <svg class="play-icon" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                    <div class="line"></div>
+                </div>
+            </div>
+            
+            <div class="right-header">
+                <!-- Image source set to paragraph8.jpg as requested -->
+                <img src="paragraph8.jpg" onerror="this.onerror=null; this.src='https://placehold.co/200x200/a0a0a0/333?text=Campus';" alt="Education Campus Image" class="header-image">
+            </div>
+        </header>
+
+        <!-- Main Content Box -->
+        <section class="content-box">
+            <p id="tts-content">I did my double Master's in Computer Networks and Security at the University of Essex from 2021 to 2022. Before that, I completed my Master's in Computer Science from Virtual University of Pakistan. And way back in 2008-2011, I earned my Bachelor's degree in Computer Science from the University of the Punjab.</p>
+        </section>
+
+        <!-- HOME Button at the bottom -->
+        <nav class="nav-buttons-bottom">
+            <a href="index.html" class="nav-link home-button">HOME</a>
+        </nav>
+    </div>
+
+    <!-- SCRIPT FOR TEXT-TO-SPEECH (TTS) FUNCTIONALITY -->
+    <script type="module">
+        // Global variables provided by the Canvas environment
+        const apiKey = "" 
+        const TTS_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${apiKey}`;
+
+        // --- Utility Functions for Audio Processing ---
+
+        // Converts Base64 string to ArrayBuffer
+        function base64ToArrayBuffer(base64) {
+            const binaryString = atob(base64);
+            const len = binaryString.length;
+            const bytes = new Uint8Array(len);
+            for (let i = 0; i < len; i++) {
+                bytes[i] = binaryString.charCodeAt(i);
+            }
+            return bytes.buffer;
+        }
+
+        // Converts PCM data to a WAV Blob (16-bit signed, mono)
+        function pcmToWav(pcmData, sampleRate) {
+            const buffer = new ArrayBuffer(44 + pcmData.length * 2);
+            const view = new DataView(buffer);
+            let offset = 0;
+
+            function writeString(str) {
+                for (let i = 0; i < str.length; i++) {
+                    view.setUint8(offset + i, str.charCodeAt(i));
+                }
+                offset += str.length;
+            }
+
+            function writeUint32(val) {
+                view.setUint32(offset, val, true);
+                offset += 4;
+            }
+
+            function writeUint16(val) {
+                view.setUint16(offset, val, true);
+                offset += 2;
+            }
+
+            // RIFF chunk
+            writeString('RIFF');
+            writeUint32(36 + pcmData.length * 2); 
+            writeString('WAVE');
+
+            // FMT chunk
+            writeString('fmt ');
+            writeUint32(16); // Chunk size
+            writeUint16(1);  // Audio format (PCM)
+            writeUint16(1);  // Number of channels (Mono)
+            writeUint32(sampleRate);
+            writeUint32(sampleRate * 2); // Byte rate (SampleRate * Channels * 2 bytes/sample)
+            writeUint16(2);  // Block align (Channels * 2 bytes/sample)
+            writeUint16(16); // Bits per sample (16-bit)
+
+            // DATA chunk
+            writeString('data');
+            writeUint32(pcmData.length * 2);
+
+            // Write PCM data
+            for (let i = 0; i < pcmData.length; i++) {
+                view.setInt16(offset, pcmData[i], true);
+                offset += 2;
+            }
+
+            return new Blob([buffer], { type: 'audio/wav' });
+        }
+
+        // Variable to track if audio is currently playing/loading
+        let isTtsActive = false;
+        let currentAudio = null;
+
+
+        // --- Core TTS Functionality ---
+
+        /**
+         * Toggles the play/stop state and calls the Gemini TTS API.
+         * @param {HTMLElement} element The play-line div element that was clicked.
+         */
+        window.handleTtsClick = async function(element) {
+            const playIconSvgContainer = element.querySelector('.play-icon');
+            const ttsElement = document.getElementById('tts-content');
+            const textToSpeak = ttsElement ? ttsElement.textContent : '';
+            
+            if (isTtsActive) {
+                // STOPPING LOGIC
+                isTtsActive = false;
+                if (currentAudio) {
+                    currentAudio.pause();
+                    currentAudio.currentTime = 0;
+                    currentAudio = null;
+                }
+                playIconSvgContainer.innerHTML = '<path d="M8 5v14l11-7z"/>'; // Reset to Play icon
+                return;
+            }
+            
+            if (!textToSpeak) return;
+
+            // STARTING/LOADING LOGIC
+            isTtsActive = true;
+            playIconSvgContainer.innerHTML = '<circle cx="12" cy="12" r="10" stroke="#333" stroke-width="2" fill="none"/>'; // Set to Loading icon
+
+            const payload = {
+                contents: [{
+                    parts: [{ text: textToSpeak }]
+                }],
+                generationConfig: {
+                    responseModalities: ["AUDIO"],
+                    speechConfig: {
+                        voiceConfig: { prebuiltVoiceConfig: { voiceName: "Charon" } } 
+                    }
+                },
+            };
+
+            const maxRetries = 3;
+            let currentDelay = 1000;
+            let result;
+
+            for (let i = 0; i < maxRetries; i++) {
+                try {
+                    const response = await fetch(TTS_API_URL, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    
+                    result = await response.json();
+                    break; 
+                } catch (error) {
+                    console.error('Error fetching TTS data:', error);
+                    if (i < maxRetries - 1) {
+                        await new Promise(resolve => setTimeout(resolve, currentDelay));
+                        currentDelay *= 2; 
+                    } else {
+                        // Final failure, reset icon and state
+                        playIconSvgContainer.innerHTML = '<path d="M8 5v14l11-7z"/>';
+                        isTtsActive = false;
+                        return;
+                    }
+                }
+            }
+
+            if (!result || !result.candidates || result.candidates.length === 0) {
+                console.error("Failed to get a valid response from the TTS API.");
+                playIconSvgContainer.innerHTML = '<path d="M8 5v14l11-7z"/>';
+                isTtsActive = false;
+                return;
+            }
+
+            const part = result.candidates[0].content?.parts?.[0];
+            const audioData = part?.inlineData?.data;
+            const mimeType = part?.inlineData?.mimeType;
+
+            if (audioData && mimeType && mimeType.startsWith("audio/L16")) {
+                try {
+                    const rateMatch = mimeType.match(/rate=(\d+)/);
+                    const sampleRate = rateMatch ? parseInt(rateMatch[1], 10) : 24000;
+                    
+                    const pcmBuffer = base64ToArrayBuffer(audioData);
+                    const pcm16 = new Int16Array(pcmBuffer); 
+                    
+                    const wavBlob = pcmToWav(pcm16, sampleRate);
+                    const audioUrl = URL.createObjectURL(wavBlob);
+                    
+                    currentAudio = new Audio(audioUrl);
+                    currentAudio.play();
+                    
+                    // Change icon to Stop/Pause icon (two vertical bars)
+                    playIconSvgContainer.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>'; 
+
+                    currentAudio.onended = () => {
+                        // Restore play icon and reset state when audio finishes
+                        playIconSvgContainer.innerHTML = '<path d="M8 5v14l11-7z"/>';
+                        isTtsActive = false;
+                        URL.revokeObjectURL(audioUrl); 
+                    };
+
+                } catch (e) {
+                    console.error("Error processing or playing audio:", e);
+                    playIconSvgContainer.innerHTML = '<path d="M8 5v14l11-7z"/>';
+                    isTtsActive = false;
+                }
+            } else {
+                console.error("Invalid audio data or MIME type returned from API:", mimeType);
+                playIconSvgContainer.innerHTML = '<path d="M8 5v14l11-7z"/>';
+                isTtsActive = false;
+            }
+        };
+    </script>
+</body>
+</html>

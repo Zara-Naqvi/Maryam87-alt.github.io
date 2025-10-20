@@ -10,12 +10,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 
     <style>
+        /* Keyframe for the subtle background glow/pulse */
+        @keyframes subtleGlow {
+            0% { box-shadow: 0 0 10px rgba(0, 123, 255, 0.2); }
+            50% { box-shadow: 0 0 20px rgba(0, 123, 255, 0.4); }
+            100% { box-shadow: 0 0 10px rgba(0, 123, 255, 0.2); }
+        }
+
         /* General Body and Container Styles */
         body {
             font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #e0e0e0; /* Light grey background */
+            background: linear-gradient(135deg, #d0d0d0, #f0f0f0); /* Gradient background */
             color: #333;
             line-height: 1.6;
             display: flex;
@@ -30,23 +37,22 @@
             background-color: #f8f8f8;
             padding: 30px;
             border-radius: 15px;
+            /* Applying the magical glow effect */
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            animation: subtleGlow 4s infinite alternate; /* The glow effect */
             text-align: center;
         }
 
         /* Header and Hero Section */
-        .hero-section {
-            margin-bottom: 40px;
-        }
-
+        .hero-section { margin-bottom: 40px; }
         .hero-section h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 3.5em; /* Large elegant font for name */
+            font-size: 3.5em;
             margin-bottom: 5px;
-            color: #222;
+            color: #1a1a1a;
             letter-spacing: 1px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1); /* Subtle 3D text effect */
         }
-
         .profile-area {
             display: flex;
             justify-content: center;
@@ -61,52 +67,42 @@
             cursor: pointer;
             margin-right: 20px;
             transition: transform 0.2s ease-in-out;
-            position: relative; /* For absolute positioning of play icon */
+            position: relative;
         }
-        
-        .play-button-container:hover {
-            transform: scale(1.05);
-        }
+        .play-button-container:hover { transform: scale(1.05); }
 
         .play-icon {
             width: 35px;
             height: 35px;
-            fill: #555; /* Dark grey play icon */
+            fill: #007bff; /* Blue color for a tech/robot feel */
             transition: fill 0.2s;
             position: absolute;
             left: 0;
         }
 
-        .play-button-container:hover .play-icon {
-            fill: #007bff; /* Blue on hover */
-        }
-
         .play-line {
-            width: 80px; /* Length of the line next to play button */
+            width: 80px;
             height: 2px;
-            background-color: #555; /* Dark grey line */
+            background-color: #007bff;
             margin-left: 10px;
-            transform: translateX(20px); /* Move line to the right of the icon position */
+            transform: translateX(20px);
         }
         
-        /* Optional: change play icon to pause icon when playing */
-        .play-button-container.playing .play-icon {
-            fill: #dc3545; /* Red when playing */
-        }
+        .play-button-container.playing .play-icon { fill: #dc3545; }
 
         .profile-pic {
             width: 150px;
             height: 150px;
-            border-radius: 50%; /* Makes it circular */
+            border-radius: 50%;
             object-fit: cover;
-            border: 5px solid #fff; /* White border */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border: 5px solid #fff;
+            box-shadow: 0 0 15px rgba(0, 123, 255, 0.5); /* Blue glow on image */
         }
 
         .hero-section h2 {
             font-family: 'Montserrat', sans-serif;
             font-size: 1.2em;
-            color: #666;
+            color: #444;
             font-weight: 600;
             margin-top: 20px;
             letter-spacing: 0.5px;
@@ -114,16 +110,16 @@
 
         /* About Me Section - Highlighted Box */
         .about-me-section {
-            background-color: #cccccc; /* Grey color matching the design */
+            background-color: #cccccc;
             padding: 30px 40px;
             border-radius: 10px;
             margin-bottom: 50px;
-            box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.2); /* Subtle section glow */
         }
 
         .about-me-section p {
             font-size: 1em;
-            color: #222; /* Darker text for readability on grey background */
+            color: #222;
             line-height: 1.8;
             text-align: justify;
         }
@@ -136,8 +132,6 @@
             margin-bottom: 30px;
             position: relative;
         }
-
-        /* Underline effect for "Know more about me" */
         .navigation-section h3::after {
             content: '';
             position: absolute;
@@ -146,9 +140,8 @@
             bottom: -10px;
             width: 60px;
             height: 2px;
-            background-color: #555;
+            background-color: #007bff; /* Blue line */
         }
-
 
         .nav-buttons {
             display: grid;
@@ -160,10 +153,10 @@
         .nav-button {
             display: block;
             padding: 15px 10px;
-            background-color: #999999; /* Grey background matching design */
-            color: #222;
+            background-color: #88aadd; /* Lighter blue/grey for tech look */
+            color: #1a1a1a;
             text-decoration: none;
-            border-radius: 50px; /* Pill shape */
+            border-radius: 50px;
             font-weight: 600;
             font-size: 0.85em;
             transition: background-color 0.3s ease, transform 0.2s ease;
@@ -172,49 +165,35 @@
         }
 
         .nav-button:hover {
-            background-color: #777777; /* Darker on hover */
+            background-color: #5577bb;
             color: #fff;
             transform: translateY(-2px);
         }
 
         .contact-me-button {
-            max-width: 200px; /* Center the contact button */
+            max-width: 200px;
             margin: 0 auto; 
-            background-color: #999999; 
-            color: #222;
+            background-color: #5577bb; 
+            color: #fff;
         }
 
         /* Responsive Adjustments */
         @media (max-width: 768px) {
-            .container {
-                width: 95%;
-                padding: 20px;
-            }
-            .hero-section h1 {
-                font-size: 2.5em;
-            }
-            .profile-area {
-                flex-direction: column; 
-            }
-            .play-button-container {
-                margin-right: 0;
-                margin-bottom: 20px;
-            }
-            .nav-buttons {
-                grid-template-columns: 1fr; /* Stack buttons on smaller screens */
-            }
+            .container { padding: 20px; }
+            .hero-section h1 { font-size: 2.5em; }
+            .profile-area { flex-direction: column; }
+            .play-button-container { margin-right: 0; margin-bottom: 20px; }
+            .nav-buttons { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         
-        <audio id="introAudio" src="audio/intro-voiceover.mp3" preload="auto"></audio>
-
         <header class="hero-section">
             <h1>Zaheer Abbas</h1>
             <div class="profile-area">
-                <div class="play-button-container" onclick="toggleAudio()">
+                <div class="play-button-container" onclick="toggleRobotVoice()">
                     <svg class="play-icon" viewBox="0 0 24 24">
                         <path d="M8 5v14l11-7z"/> <path d="M0 0h24v24H0z" fill="none"/>
                     </svg>
@@ -226,7 +205,7 @@
         </header>
 
         <section class="about-me-section">
-            <p>Hello, I am Zaheer Abbas. As a seasoned Deputy IT Manager for Infrastructure with over 14 years of experience, I leverage my expertise in managing complex IT environments to drive innovation and excellence in higher education and public sectors. With a strong background in Linux systems, virtualization technologies, and networking, I excel in leading data center operations, infrastructure planning, and service delivery while prioritizing automation, resilience, and compliance. Currently serving at the University of Oxford, I bring technical leadership and strategic vision to the table, supported by professional certifications including PRINCE2, ITIL, RHCSA, and CEH.</p>
+            <p id="bio-text">Hello, I am Zaheer Abbas. As a seasoned Deputy IT Manager for Infrastructure with over 14 years of experience, I leverage my expertise in managing complex IT environments to drive innovation and excellence in higher education and public sectors. With a strong background in Linux systems, virtualization technologies, and networking, I excel in leading data center operations, infrastructure planning, and service delivery while prioritizing automation, resilience, and compliance. Currently serving at the University of Oxford, I bring technical leadership and strategic vision to the table, supported by professional certifications including PRINCE2, ITIL, RHCSA, and CEH.</p>
         </section>
 
         <section class="navigation-section">
@@ -242,49 +221,73 @@
     </div>
 
     <script>
-        // Get the audio element
-        const introAudio = document.getElementById('introAudio');
-        // Get the play button container
+        const synth = window.speechSynthesis;
+        const bioText = document.getElementById('bio-text').textContent;
         const playButtonContainer = document.querySelector('.play-button-container');
-        // Get the SVG path for the play icon (first path child of the SVG)
         const playIconPath = playButtonContainer.querySelector('.play-icon path:first-child');
         
-        let isPlaying = false; // To keep track of audio state
+        let utterance = null;
+        let isSpeaking = false;
 
-        // Function to toggle audio playback
-        function toggleAudio() {
-            if (isPlaying) {
-                // STOP/PAUSE audio
-                introAudio.pause();
-                // Reset playback to start for next play
-                introAudio.currentTime = 0; 
-                isPlaying = false;
-                // Change icon to play
+        function toggleRobotVoice() {
+            if (isSpeaking) {
+                // STOP/PAUSE speaking
+                synth.cancel(); 
+                isSpeaking = false;
                 playIconPath.setAttribute('d', 'M8 5v14l11-7z'); // Play icon path
                 playButtonContainer.classList.remove('playing');
-            } else {
-                // PLAY audio
-                introAudio.play()
-                    .then(() => {
-                        isPlaying = true;
-                        // Change icon to pause (this is the path for a standard pause icon)
-                        playIconPath.setAttribute('d', 'M6 19h4V5H6v14zm8-14v14h4V5h-4z'); 
-                        playButtonContainer.classList.add('playing');
-                    })
-                    .catch(error => {
-                        console.error("Audio playback failed:", error);
-                        // Alert user if browser policy prevents autoplay
-                        alert("Audio playback might be blocked by your browser's autoplay policy.");
-                    });
+                return;
+            } 
+            
+            if (synth.speaking) {
+                // Should not happen, but good to check
+                synth.cancel();
             }
-        }
 
-        // Optional: If the audio finishes playing by itself, reset the icon
-        introAudio.addEventListener('ended', () => {
-            isPlaying = false;
-            playIconPath.setAttribute('d', 'M8 5v14l11-7z'); // Reset to Play icon
-            playButtonContainer.classList.remove('playing');
-        });
+            // 1. Create a new utterance object every time (best practice)
+            utterance = new SpeechSynthesisUtterance(bioText);
+
+            // 2. Configure for a robot/male sound
+            utterance.rate = 1; // Speed (1 is default)
+            utterance.pitch = 1; // Pitch (1 is default)
+            
+            // Try to find a male voice, often 'Google UK English Male' or similar
+            // This is system-dependent, so we use a fallback later
+            const voices = synth.getVoices();
+            let maleVoice = voices.find(voice => 
+                voice.name.includes('Male') || 
+                voice.name.includes('Zira') || 
+                voice.name.includes('David') || 
+                voice.default && voice.lang.includes('en')
+            );
+
+            if (maleVoice) {
+                utterance.voice = maleVoice;
+            } else {
+                // Fallback for simple robot effect
+                utterance.pitch = 0.5; // Lower pitch for deeper voice
+                utterance.rate = 0.9;  // Slightly slower speed for robot effect
+            }
+
+            // 3. Set event listeners for state management
+            utterance.onstart = () => {
+                isSpeaking = true;
+                playIconPath.setAttribute('d', 'M6 19h4V5H6v14zm8-14v14h4V5h-4z'); // Pause icon
+                playButtonContainer.classList.add('playing');
+            };
+
+            utterance.onend = () => {
+                isSpeaking = false;
+                playIconPath.setAttribute('d', 'M8 5v14l11-7z'); // Play icon
+                playButtonContainer.classList.remove('playing');
+            };
+
+            // 4. Speak the text
+            synth.speak(utterance);
+        }
+        
+        // This is necessary to load the voice list in some browsers
+        synth.onvoiceschanged = toggleRobotVoice;
     </script>
 </body>
 </html>

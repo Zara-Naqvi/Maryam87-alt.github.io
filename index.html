@@ -28,30 +28,60 @@
             font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #e0e0e0;
-            color: #333;
+            /* **CHANGED: Set the overall body background to a dark color** */
+            background-color: #121212; 
+            color: #fff; /* **CHANGED: Changed default text color for dark background** */
             line-height: 1.6;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            /* Added position relative to place the blur layer correctly */
+            position: relative;
+            /* Remove scrollbar just in case content is slightly taller */
+            overflow: hidden; 
         }
+
+        /* **NEW: Styles for the full blur background effect** */
+        .background-blur-layer {
+            position: fixed; /* Keep it fixed so it covers the whole viewport */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* **NEW: Apply a heavy blur to the background content (nothing visible yet, but prepares for an image)** */
+            /* Add an image URL here if you want a complex blurred background! */
+            background-color: rgba(0, 0, 0, 0.8); /* **NEW: Dark overlay for the blur layer** */
+            filter: blur(50px); /* **NEW: Full blur effect** */
+            z-index: -1; /* Place it behind the .container */
+        }
+        
+        /* You can add an image to the blur layer like this:
+        .background-blur-layer {
+            background-image: url('your-background-image.jpg');
+            background-size: cover;
+            background-position: center;
+            ... other styles
+        }
+        */
 
         .container {
             width: 90%;
             max-width: 800px;
-            background-color: #f8f8f8;
+            /* **MODIFIED: Kept the textbox color white but lowered the opacity for a slight 'glass' effect** */
+            background-color: rgba(248, 248, 248, 0.95);
             padding: 30px;
             border-radius: 15px;
             
             /* Apply the two magical effects */
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* **MODIFIED: Darker shadow for contrast** */
             animation: 
                 pageLoadFade 2s ease-out forwards, /* Blur-to-HD effect */
                 subtleGlow 4s infinite alternate 2s; /* Subtle grey pulse starts after load */
             
             text-align: center;
             opacity: 0; /* Start invisible for the pageLoadFade effect */
+            z-index: 1; /* Ensure it's above the blur layer */
         }
 
         /* Header and Hero Section */
@@ -60,7 +90,7 @@
             font-family: 'Playfair Display', serif;
             font-size: 3.5em;
             margin-bottom: 5px;
-            color: #1a1a1a;
+            color: #1a1a1a; /* **Keep dark text for contrast on white textbox** */
             letter-spacing: 1px;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
@@ -121,16 +151,19 @@
 
         /* About Me Section - Highlighted Box */
         .about-me-section {
-            background-color: #cccccc;
+            /* **MODIFIED: Kept the relative color but darkened and gave it a slight transparency** */
+            background-color: rgba(100, 100, 100, 0.1); 
             padding: 30px 40px;
             border-radius: 10px;
             margin-bottom: 50px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Added a very subtle border for definition */
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .about-me-section p {
             font-size: 1em;
-            color: #222;
+            color: #222; /* **Keep dark text for contrast on white textbox** */
             line-height: 1.8;
             text-align: justify;
         }
@@ -139,7 +172,7 @@
         .navigation-section h3 {
             font-family: 'Playfair Display', serif;
             font-size: 1.8em;
-            color: #222;
+            color: #222; /* **Keep dark text for contrast on white textbox** */
             margin-bottom: 30px;
             position: relative;
         }
@@ -164,8 +197,9 @@
         .nav-button {
             display: block;
             padding: 15px 10px;
-            background-color: #a0a0a0;
-            color: #1a1a1a;
+            /* **MODIFIED: Darker buttons for the new theme** */
+            background-color: #404040;
+            color: #f0f0f0; /* Light text */
             text-decoration: none;
             border-radius: 50px;
             font-weight: 600;
@@ -176,7 +210,8 @@
         }
 
         .nav-button:hover {
-            background-color: #888888;
+            /* **MODIFIED: Lighter hover color** */
+            background-color: #555555;
             color: #fff;
             transform: translateY(-2px);
         }
@@ -184,6 +219,7 @@
         .contact-me-button {
             max-width: 200px;
             margin: 0 auto; 
+            /* **MODIFIED: Primary accent color** */
             background-color: #777777;
             color: #fff;
         }
@@ -199,6 +235,8 @@
     </style>
 </head>
 <body>
+    <div class="background-blur-layer"></div>
+    
     <div class="container">
         
         <header class="hero-section">
@@ -234,6 +272,7 @@
     </div>
 
     <script>
+        // Existing JavaScript code remains the same...
         const synth = window.speechSynthesis;
         const bioText = document.getElementById('bio-text').textContent;
         const playButtonContainer = document.querySelector('.play-button-container');
@@ -292,7 +331,14 @@
         }
         
         // This is necessary to load the voice list in some browsers
-        synth.onvoiceschanged = toggleRobotVoice;
+        if (synth.onvoiceschanged) {
+            synth.onvoiceschanged = toggleRobotVoice;
+        } else {
+            // Fallback for browsers that don't fire onvoiceschanged
+            setTimeout(() => {
+                toggleRobotVoice();
+            }, 500);
+        }
     </script>
 </body>
 </html>

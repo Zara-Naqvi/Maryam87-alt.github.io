@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zaheer Abbas - Education</title>
     
-    <!-- LINK GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Using Playfair Display for titles (italic for this page) and Montserrat for body text -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 
     <style>
@@ -22,8 +20,10 @@
             font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #e0e0e0;
-            color: #333;
+            /* ************ MODIFIED: Dark Grey Background ************ */
+            background-color: #1e1e1e;
+            /* ************ MODIFIED: Light Text for Contrast ************ */
+            color: #f0f0f0;
             line-height: 1.6;
             display: flex;
             justify-content: center;
@@ -61,12 +61,16 @@
         .nav-link {
             display: block;
             padding: 12px 25px;
-            background-color: #a0a0a0;
-            color: #1a1a1a;
+            /* ************ MODIFIED: Darker button color ************ */
+            background-color: #383838;
+            /* ************ MODIFIED: Light text color ************ */
+            color: #f0f0f0;
             text-decoration: none;
             border-radius: 50px;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.5);
-            border: 1px solid #999;
+            /* ************ MODIFIED: Dark shadow and subtle inset ************ */
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            /* ************ MODIFIED: Darker border ************ */
+            border: 1px solid #555;
             font-weight: 600;
             font-size: 0.9em;
             text-align: center;
@@ -76,17 +80,18 @@
         }
 
         .nav-link:hover {
-            background: linear-gradient(to top, #888888, #b0b0b0);
+            /* ************ MODIFIED: Lighter hover background ************ */
+            background: linear-gradient(to top, #555555, #777777);
             color: #fff;
             transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
         }
 
-        /* Active page style (Education) */
-        .nav-buttons-top .nav-link:nth-child(5) { 
+        /* Active page style (Education) - It is missing from the list, so I'll add it to the correct link now in the HTML and make it inactive below */
+        .nav-buttons-top .nav-link.active-page { 
             background: #555555;
             color: #ffffff;
-            box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.3);
+            box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.5);
             pointer-events: none;
         }
         
@@ -100,7 +105,7 @@
             display: flex;
             flex-direction: row;
             justify-content: space-between;
-            align-items: center; /* Aligns title and image vertically centered */
+            align-items: center; 
             width: 100%;
             max-width: 800px;
             margin-bottom: 40px;
@@ -115,11 +120,12 @@
         .main-title {
             font-family: 'Playfair Display', serif;
             font-size: 5em; 
-            color: #1a1a1a;
+            /* ************ MODIFIED: Light color for Dark Mode ************ */
+            color: #ffffff;
             line-height: 1.1;
             margin: 0;
             font-weight: 700;
-            font-style: italic; /* Title is italic in the design */
+            font-style: italic; 
             text-transform: uppercase;
         }
 
@@ -133,7 +139,8 @@
         .play-line svg {
             width: 20px;
             height: 20px;
-            fill: #333;
+            /* ************ MODIFIED: Light fill color ************ */
+            fill: #f0f0f0;
             margin-right: 10px;
             transition: transform 0.2s ease;
         }
@@ -144,8 +151,9 @@
 
         .play-line .line {
             height: 2px;
-            width: 250px; /* Longer line for design match */
-            background-color: #333;
+            width: 250px; 
+            /* ************ MODIFIED: Light line color ************ */
+            background-color: #f0f0f0;
             transition: background-color 0.2s ease;
         }
 
@@ -161,26 +169,36 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            /* ************ MODIFIED: Stronger shadow for dark mode ************ */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
         }
 
 
         /* --- MAIN CONTENT BOX --- */
         .content-box {
-            background-color: #cccccc;
+            /* ************ MODIFIED: Semi-transparent dark grey for Frosted Glass ************ */
+            background-color: rgba(30, 30, 30, 0.7); 
+            /* ************ NEW: The Blur (Frosted Glass) Effect ************ */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            /* ************ NEW: Subtle border for definition ************ */
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            
             width: 100%;
             max-width: 750px; 
             margin: 0 auto;
             padding: 35px 50px;
             border-radius: 50px; 
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            /* ************ MODIFIED: Stronger shadow for dark mode ************ */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
             text-align: center; 
         }
 
         .content-box p {
             font-size: 1.1em;
             line-height: 1.7;
-            color: #1a1a1a;
+            /* ************ MODIFIED: Light text for Dark Mode ************ */
+            color: #f0f0f0;
             font-weight: 600; 
             margin: 0;
         }
@@ -230,8 +248,8 @@
 <body>
     <div class="main-wrapper">
         
-        <!-- NAVIGATION BAR AT THE TOP (Education is not linked as it's the current page) -->
         <nav class="nav-buttons-top">
+            <a href="education.html" class="nav-link active-page">EDUCATION</a>
             <a href="skills.html" class="nav-link">KEY SKILLS & TOOLS</a>
             <a href="certifications.html" class="nav-link">CERTIFICATIONS & TRAINING</a>
             <a href="experience.html" class="nav-link">WORK EXPERIENCE</a>
@@ -240,10 +258,8 @@
 
         <header class="header-grid">
             <div class="left-header">
-                <!-- Main Title: EDUCATION -->
                 <h1 class="main-title">EDUCATION</h1>
 
-                <!-- Play Icon and Line -->
                 <div class="play-line" onclick="handleTtsClick(this)">
                     <svg class="play-icon" viewBox="0 0 24 24">
                         <path d="M8 5v14l11-7z"/>
@@ -253,23 +269,19 @@
             </div>
             
             <div class="right-header">
-                <!-- Image source set to paragraph8.jpg as requested -->
-                <img src="paragraph8.jpg" onerror="this.onerror=null; this.src='https://placehold.co/200x200/a0a0a0/333?text=Campus';" alt="Education Campus Image" class="header-image">
+                <img src="paragraph8.jpg" onerror="this.onerror=null; this.src='https://placehold.co/200x200/383838/f0f0f0?text=Campus';" alt="Education Campus Image" class="header-image">
             </div>
         </header>
 
-        <!-- Main Content Box -->
         <section class="content-box">
-            <p id="tts-content">I did my double Master's in Computer Networks and Security at the University of Essex from 2021 to 2022. Before that, I completed my Master's in Computer Science from Virtual University of Pakistan. And way back in 2008-2011, I earned my Bachelor's degree in Computer Science from the University of the Punjab.</p>
+            <p id="tts-content">I did my double Master's in Computer Networks and Security at the **University of Essex** from 2021 to 2022. Before that, I completed my Master's in Computer Science from **Virtual University of Pakistan**. And way back in 2008-2011, I earned my Bachelor's degree in Computer Science from the **University of the Punjab**.</p>
         </section>
 
-        <!-- HOME Button at the bottom -->
         <nav class="nav-buttons-bottom">
             <a href="index.html" class="nav-link home-button">HOME</a>
         </nav>
     </div>
 
-    <!-- SCRIPT FOR TEXT-TO-SPEECH (TTS) FUNCTIONALITY -->
     <script type="module">
         // Global variables provided by the Canvas environment
         const apiKey = "" 
@@ -371,7 +383,7 @@
 
             // STARTING/LOADING LOGIC
             isTtsActive = true;
-            playIconSvgContainer.innerHTML = '<circle cx="12" cy="12" r="10" stroke="#333" stroke-width="2" fill="none"/>'; // Set to Loading icon
+            playIconSvgContainer.innerHTML = '<circle cx="12" cy="12" r="10" stroke="#f0f0f0" stroke-width="2" fill="none"/>'; // Set to Loading icon (color changed for dark mode)
 
             const payload = {
                 contents: [{

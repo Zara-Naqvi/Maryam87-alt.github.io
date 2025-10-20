@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zaheer Abbas - Contact Me</title>
+    
+    <!-- LINK GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Using Playfair Display for titles and Montserrat for body text -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* --- CORE STYLES AND ANIMATIONS --- */
+        @keyframes pageLoadFade {
+            0% { opacity: 0; filter: blur(5px); transform: scale(0.98); }
+            100% { opacity: 1; filter: blur(0); transform: scale(1); }
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e0e0e0;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding: 50px 20px;
+            box-sizing: border-box;
+        }
+
+        .main-wrapper {
+            width: 100%;
+            max-width: 1000px;
+            animation: pageLoadFade 2s ease-out forwards;
+            opacity: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* --- NAVIGATION BUTTONS --- */
+        .nav-buttons-top {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 50px;
+            width: 100%;
+        }
+
+        .nav-buttons-bottom {
+            margin-top: 50px;
+            margin-bottom: 20px;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 12px 25px;
+            background-color: #a0a0a0;
+            color: #1a1a1a;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            border: 1px solid #999;
+            font-weight: 600;
+            font-size: 0.9em;
+            text-align: center;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-link:hover {
+            background: linear-gradient(to top, #888888, #b0b0b0);
+            color: #fff;
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Active page style (Contact Me) */
+        .nav-buttons-top .nav-link:last-child { 
+            background: #555555;
+            color: #ffffff;
+            box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.3);
+            pointer-events: none;
+        }
+        
+        .home-button {
+            padding: 12px 50px;
+        }
+
+        /* --- MAIN CONTACT GRID --- */
+        .contact-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-width: 800px;
+            gap: 50px;
+        }
+        
+        /* Left: Contact Circle */
+        .contact-circle {
+            width: 300px;
+            height: 300px;
+            background-color: #a0a0a0;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            flex-shrink: 0;
+        }
+        
+        .contact-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5em; 
+            color: #1a1a1a;
+            line-height: 1.1;
+            font-weight: 700;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            user-select: none;
+        }
+        
+        /* Right: Contact Details List */
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            flex-grow: 1;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-item i {
+            font-size: 1.5em;
+            width: 40px;
+            text-align: center;
+            color: #1a1a1a;
+        }
+
+        .contact-item a,
+        .contact-item span {
+            /* Changed to Montserrat for simple writing */
+            font-family: 'Montserrat', sans-serif; 
+            font-size: 1.3em; /* Slightly smaller and simpler appearance */
+            font-weight: 600; /* Bold for clarity */
+            color: #1a1a1a;
+            text-decoration: none;
+            transition: color 0.2s;
+            text-transform: none; /* Removed uppercase */
+        }
+
+        .contact-item a:hover {
+            color: #555555;
+        }
+
+        /* --- RESPONSIVE ADJUSTMENTS --- */
+        @media (max-width: 768px) {
+            .nav-buttons-top {
+                gap: 8px;
+            }
+            .nav-link {
+                padding: 10px 12px;
+                font-size: 0.8em;
+            }
+            .contact-grid {
+                flex-direction: column; 
+                gap: 40px;
+            }
+            .contact-circle {
+                width: 250px;
+                height: 250px;
+            }
+            .contact-title {
+                font-size: 3em;
+            }
+            .contact-item a,
+            .contact-item span {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-wrapper">
+        
+        <!-- NAVIGATION BAR AT THE TOP -->
+        <nav class="nav-buttons-top">
+            <a href="education.html" class="nav-link">EDUCATION</a>
+            <a href="skills.html" class="nav-link">KEY SKILLS & TOOLS</a>
+            <a href="certifications.html" class="nav-link">CERTIFICATIONS & TRAINING</a>
+            <a href="experience.html" class="nav-link">WORK EXPERIENCE</a>
+            <a href="contact.html" class="nav-link" id="current-page">CONTACT ME</a>
+        </nav>
+
+        <section class="contact-grid">
+            <!-- Left Side: Contact Circle (Updated to CONTACT ME) -->
+            <div class="contact-circle">
+                <h2 class="contact-title">CONTACT<br>ME</h2>
+            </div>
+            
+            <!-- Right Side: Contact Details (Updated to simple writing style) -->
+            <div class="contact-details">
+                
+                <!-- Phone -->
+                <div class="contact-item">
+                    <i class="fa fa-phone-alt"></i>
+                    <a href="tel:07405511766">0740 551 1766</a>
+                </div>
+
+                <!-- Email -->
+                <div class="contact-item">
+                    <i class="fa fa-envelope"></i>
+                    <a href="mailto:ZAHEER.PSG@GMAIL.COM">zaheer.psg@gmail.com</a>
+                </div>
+
+                <!-- Address -->
+                <div class="contact-item">
+                    <i class="fa fa-home"></i>
+                    <span>12 Ash Cres, Harwell (OX11 0FJ)</span>
+                </div>
+
+                <!-- LinkedIn -->
+                <div class="contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    <a href="https://www.linkedin.com/in/zaheerabbas52165640" target="_blank">linkedin.com/in/zaheerabbas52165640</a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- HOME Button at the bottom -->
+        <nav class="nav-buttons-bottom">
+            <a href="index.html" class="nav-link home-button">HOME</a>
+        </nav>
+    </div>
+</body>
+</html>

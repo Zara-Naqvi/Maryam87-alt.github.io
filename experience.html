@@ -146,18 +146,38 @@
             object-fit: cover;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
         }
+        
+        /* SECOND IMAGE BELOW THE FIRST SECTION */
+        .sub-section-image {
+            width: 100%;
+            max-width: 700px;
+            height: auto;
+            border-radius: 20px;
+            object-fit: cover;
+            margin: 30px auto;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            display: block; /* Centers the image */
+        }
+
 
         /* --- Content Box Styling (REDUCED WIDTH) --- */
         .content-box {
             background-color: #cccccc; 
             width: 95%; /* Fluid width */
             max-width: 700px; /* Reduced to match homepage paragraph width */
-            margin: 0 auto;
+            margin: 0 auto 40px auto; /* Increased bottom margin for separation */
             padding: 30px 40px;
             border-radius: 20px; 
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             animation: subtleGlow 4s infinite alternate 2s;
             text-align: left;
+        }
+        
+        /* New section style to contain the next experience block */
+        .experience-section {
+            width: 95%; 
+            max-width: 700px;
+            margin: 0 auto 50px auto; /* Standard margin for sections */
         }
 
         .content-box p, .content-box ul {
@@ -166,6 +186,27 @@
             color: #222;
             margin-bottom: 20px;
         }
+
+        .content-box h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.8em;
+            color: #1a1a1a;
+            line-height: 1.2;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .content-box .job-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1.1em;
+            color: #444;
+            margin-top: 0;
+            margin-bottom: 20px;
+            display: block;
+        }
+
 
         .content-box h4 {
             font-family: 'Montserrat', sans-serif;
@@ -226,6 +267,9 @@
                 padding: 20px;
                 max-width: 95%;
             }
+            .content-box h3 {
+                font-size: 1.5em;
+            }
         }
     </style>
 </head>
@@ -254,11 +298,14 @@
             </div>
             
             <div class="right-header">
-                <img src="paragraph5.jpg" onerror="this.onerror=null; this.src='https://placehold.co/450x300/a0a0a0/333?text=Work+Image';" alt="Workplace Image" class="header-image">
+                <img src="paragraph6.jpg" onerror="this.onerror=null; this.src='https://placehold.co/450x300/a0a0a0/333?text=Work+Image';" alt="University of Oxford Building" class="header-image">
             </div>
         </header>
 
-        <section class="content-box" id="work-text">
+        <section class="content-box" id="work-text-oxford">
+            <h3>University of Oxford (Computer Science Department)</h3>
+            <span class="job-title">Deputy IT Manager for Infrastructure | Aug 2022 – Present</span>
+
             <p>I'm Deputy IT Manager for Infrastructure at the University of Oxford's Computer Science Department. I've been in this role since August 2022, and my days are filled with excitement. I lead infrastructure strategy and operations across two datacenters to ensure our systems are running smoothly. I manage a talented team of Linux and Windows system administrators, and we've achieved some amazing things together.</p>
 
             <h4 class="sub-heading">A bit about my background</h4>
@@ -275,12 +322,77 @@
             <h4 class="sub-heading">What I do</h4>
             <p>My role involves leading infrastructure strategy, managing a team, and overseeing our annual infrastructure budget of £300k–£500k. I'm also responsible for drafting our cyber security strategy and acting as a technical lead for core infrastructure.</p>
         </section>
+
+        <section class="content-box" id="work-text-harrow">
+            <h3>Harrow College</h3>
+            <span class="job-title">IT Support Engineer / Lecturer (Cyber Security & Big Data) | Feb 2022 – June 2022</span>
+            <ul>
+                <li>Provided **IT Support Engineering** during my Master's, supporting the college IT infrastructure.</li>
+                <li>Promoted after one month to **Lecturer**, teaching Level 3 Cyber Security and Big Data with a **95% pass rate**.</li>
+            </ul>
+        </section>
+
+        <img src="paragraph7.jpg" onerror="this.onerror=null; this.src='https://placehold.co/700x400/a0a0a0/333?text=PSCA+Image';" alt="Punjab Safe Cities Authority Image" class="sub-section-image">
+
+
+        <section class="content-box" id="work-text-psca">
+            <h3>Punjab Safe Cities Authority (Lahore)</h3>
+            <span class="job-title">Deputy Executive Officer (Systems Administration) | Jan 2020 – Jan 2022</span>
+            
+            <p>Managed and modernised a large-scale datacenter environment (600+ servers), leading platform automation, infrastructure monitoring, and security hardening.</p>
+            
+            <h4 class="sub-heading">Key Accomplishments</h4>
+            <ul>
+                <li>**Deployed and maintained** centralised monitoring and logging solutions (Zabbix, Grafana, ELK, Graylog).</li>
+                <li>Hardened and managed **WAN & Local Area Networks** across the authority.</li>
+                <li>**Automated server provisioning, patching, and backups** using Ansible.</li>
+                <li>Integrated Linux infrastructure with **Active Directory** using SSSD for central authentication.</li>
+                <li>Deployed and maintained **Hardware/VMs** and **storage arrays** (Aurora, SAM, AuriS).</li>
+                <li>Mitigated brute-force and **DDoS attacks** attempts using Fail2Ban and ModEvasive.</li>
+                <li>Managed containerized deployments across Kubernetes and Docker platforms.</li>
+                <li>Provided daily operational oversight to ensure service availability, security compliance, and timely incident response.</li>
+            </ul>
+        </section>
+
+
+        <section class="content-box" id="work-text-pra">
+            <h3>Punjab Revenue Authority (Lahore)</h3>
+            <span class="job-title">Assistant Director (Systems Administration) | June 2017 – Jan 2020</span>
+            
+            <p>I led the design, deployment, maintenance, and production support of **PRA LAN, WAN, MPLS based VPN networks** on 08 different sites across Punjab. I led the day-to-day IT operations (i.e., deployment, monitoring, maintenance, security, upgrades and backup of servers, desktop computers, printers, routers, switches, firewall, software, hardware, and operating system).</p>
+            
+            <h4 class="sub-heading">Key Responsibilities</h4>
+            <ul>
+                <li>Managed **High Performance & High Availability Clustering** of data-processing centers (Both Linux & Windows) running multiple operations (i.e., Apache, IIS, MySQL/SQL) using VMware Virtualization (ESXi hosts) and Rocky-Cluster.</li>
+                <li>Managed the **firewall** security for data-center, monitored by PRA.</li>
+                <li>Led **incident response** responsible for the detection, response, isolation, and remediation of security incidents, as well as identifying the root cause analysis to ensure prompt action is taken to prevent reoccurrence and strengthen the relevant cyber security controls.</li>
+                <li>Provided **comprehensive technical troubleshooting and support** across different network and security systems, including (but not limited to): antivirus, firewalls, IDS/IPS, switches, routers, LAN/WAN, servers, MFA, and end points.</li>
+                <li>Analyzed and remediated **vulnerabilities** discovered in annual penetration tests.</li>
+                <li>Monitored, designed and implemented, managed, and maintained the **access control and security** permissions for all authorized system users.</li>
+                <li>Provided architectural design and subject matter expertise on **technical security requirements** for all projects.</li>
+            </ul>
+        </section>
+
+        <div class="experience-section">
+            <section class="content-box" style="margin-bottom: 0;">
+                <h3 style="margin-bottom: 5px;">Other Experience</h3>
+                <p><strong>Federal Govt (Pakistan) – System / Network Administrator</strong> | Aug 2011 – June 2013</p>
+                <p><strong>Zahaq Associates (Peshawar) – IT Officer</strong> | June 2013 – June 2017</p>
+                <p><strong>Road NGO – IT Support Engineer (Volunteer)</strong> | Aug 2011 – Jan 2019</p>
+            </section>
+        </div>
+        
     </div>
 
     <script>
-        // Note: The onerror attribute on the image handles the case where paragraph5.jpg might not be found.
         const synth = window.speechSynthesis;
-        const workText = document.getElementById('work-text').textContent;
+        // Concatenating all main experience text for the TTS reader
+        const workTextOxford = document.getElementById('work-text-oxford').textContent;
+        const workTextHarrow = document.getElementById('work-text-harrow').textContent;
+        const workTextPSCA = document.getElementById('work-text-psca').textContent;
+        const workTextPRA = document.getElementById('work-text-pra').textContent;
+        const fullWorkText = workTextOxford + workTextHarrow + workTextPSCA + workTextPRA; 
+        
         const playButtonContainer = document.querySelector('.play-button-container');
         const playIconPath = playButtonContainer.querySelector('.play-icon path:first-child');
         
@@ -301,8 +413,8 @@
                 synth.cancel();
             }
 
-            // 1. Create a new utterance object
-            utterance = new SpeechSynthesisUtterance(workText);
+            // 1. Create a new utterance object using the full text
+            utterance = new SpeechSynthesisUtterance(fullWorkText);
 
             // 2. Configure for a robot/male sound 
             utterance.pitch = 0.5; // Lower pitch for deeper voice
@@ -337,7 +449,12 @@
         }
         
         // This is necessary to load the voice list in some browsers
-        synth.onvoiceschanged = toggleRobotVoice;
+        synth.onvoiceschanged = () => {
+             // Only run toggleRobotVoice once to initialize the voices if not already speaking
+            if (synth.getVoices().length > 0 && !isSpeaking) {
+                // Do nothing here, as we want the user to click the button to start
+            }
+        };
     </script>
 </body>
 </html>

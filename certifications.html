@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zaheer Abbas - Certifications & Trainings</title>
+    
+    <!-- LINK GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- EMBEDDED CSS STYLES AND MAGICAL EFFECTS -->
+    <style>
+        /* CSS Keyframes for Page Load Effect: Blur-to-HD, slow motion (2 seconds) */
+        @keyframes pageLoadFade {
+            0% { opacity: 0; filter: blur(5px); transform: scale(0.98); }
+            100% { opacity: 1; filter: blur(0); transform: scale(1); }
+        }
+
+        /* CSS Keyframes for the Subtle Container Glow */
+        @keyframes subtleGlow {
+            0% { box-shadow: 0 0 10px rgba(180, 180, 180, 0.2); }
+            50% { box-shadow: 0 0 20px rgba(180, 180, 180, 0.4); }
+            100% { box-shadow: 0 0 10px rgba(180, 180, 180, 0.2); }
+        }
+
+        /* General Body and Container Styles */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e0e0e0; /* Light grey background */
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden; /* Prevent horizontal scroll on mobile */
+        }
+
+        .main-wrapper {
+            width: 90%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 50px 0;
+            
+            /* Apply the magical effect to the main container */
+            animation: pageLoadFade 2s ease-out forwards;
+            opacity: 0;
+        }
+
+        /* Main Content Area (Title and Certification List) */
+        .content-area {
+            flex-grow: 1;
+            padding-right: 40px;
+            text-align: center;
+        }
+
+        .main-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4em; 
+            color: #1a1a1a;
+            line-height: 1.1;
+            margin-bottom: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* Certification List Box (Large, Rounded Grey) */
+        .cert-box {
+            background-color: #cccccc; /* Light grey box */
+            width: 100%;
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 40px 60px;
+            border-radius: 40px; /* Highly rounded corners */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            animation: subtleGlow 4s infinite alternate 2s; /* Subtle glow */
+            text-align: left;
+        }
+
+        .cert-box ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Styling for the list of items */
+        .cert-box ul li {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+            text-indent: -1.5em; /* Create hanging indentation */
+            padding-left: 1.5em;
+        }
+
+        .cert-box ul li:before {
+            content: '• '; /* Custom bullet point */
+            color: #444;
+            font-size: 1.2em;
+            line-height: 1;
+        }
+        
+        /* Navigation Bar (Vertical on the right) */
+        .nav-bar {
+            width: 180px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 15px 10px;
+            background-color: #a0a0a0; /* Matching button grey */
+            color: #1a1a1a;
+            text-decoration: none;
+            border-radius: 50px 0 0 50px; /* Rounded only on the left side */
+            font-weight: 600;
+            font-size: 0.9em;
+            text-align: right;
+            text-transform: uppercase;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .nav-link:hover {
+            background-color: #888888;
+            color: #fff;
+            transform: translateX(-5px);
+        }
+
+        /* Home Button (Separate, centered at the bottom) */
+        .home-button-container {
+            width: 100%;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .home-button {
+            display: inline-block;
+            padding: 15px 60px;
+            background-color: #777777; 
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1em;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            text-transform: uppercase;
+        }
+
+        .home-button:hover {
+            background-color: #555555;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 900px) {
+            .main-wrapper { 
+                flex-direction: column;
+                align-items: center;
+                padding: 30px 0;
+            }
+            .content-area {
+                padding-right: 0;
+                margin-bottom: 30px;
+            }
+            .main-title {
+                font-size: 3em;
+                margin-bottom: 30px;
+            }
+            .cert-box {
+                padding: 30px 40px;
+                border-radius: 20px;
+            }
+            .nav-bar {
+                width: 90%;
+                max-width: 500px;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .nav-link {
+                width: 45%; /* Two buttons per row */
+                text-align: center;
+                border-radius: 50px; /* Full rounded on mobile */
+                transform: none !important;
+            }
+            .nav-link:hover {
+                transform: none;
+            }
+            .home-button-container {
+                margin-top: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-wrapper">
+        
+        <div class="content-area">
+            
+            <header>
+                <h1 class="main-title">Certifications &<br>Trainings</h1>
+            </header>
+
+            <section class="cert-box">
+                <ul>
+                    <li>PRINCE2 Foundation and Practitioner</li>
+                    <li>EC-Council Certified Ethical Hacker & EC-Council Network Security Administrator & CISMP</li>
+                    <li>RedHat Certified System Administrator (RHCSA)</li>
+                    <li>CompTIA A+ & CompTIA Security+</li>
+                    <li>Microsoft Certified System Associate (MCSA) & Microsoft Certified System Engineer (MCSE)</li>
+                    <li>Azure Fundamentals (AZ-900) & Certified Azure Administrator (AZ-104)</li>
+                    <li>CISCO Certified Network Associate (R&S, Sec, Datacenter)</li>
+                    <li>ITIL Foundation v3</li>
+                </ul>
+            </section>
+            
+            <div class="home-button-container">
+                <a href="index.html" class="home-button">Home</a>
+            </div>
+
+        </div>
+
+        <!-- Vertical Navigation Bar (Right Side) -->
+        <nav class="nav-bar">
+            <a href="skills.html" class="nav-link">KEY SKILLS & TRAINING</a>
+            <!-- Current page is certifications.html -->
+            <a href="experience.html" class="nav-link">WORK EXPERIENCE</a>
+            <a href="education.html" class="nav-link">EDUCATION</a>
+            <a href="contact.html" class="nav-link">CONTACT ME</a>
+        </nav>
+
+    </div>
+</body>
+</html>

@@ -92,22 +92,21 @@
         import { getFirestore, doc, setDoc, onSnapshot, setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
         
         // =========================================================================
-        // ✅ PROJECT ID CONFIRMED AND INSERTED HERE TO GUARANTEE INITIALIZATION
+        // ✅ FULL FIREBASE CONFIGURATION PROVIDED DIRECTLY IN CODE
         // =========================================================================
-        const MANUAL_PROJECT_ID = 'zahra-work-experience-edition'; 
+        const firebaseConfig = {
+            apiKey: "AIzaSyAGiVblaZ01_iyiaJ8AAZgmob-eGZia9j0",
+            authDomain: "zahra-work-experience-edition.firebaseapp.com",
+            projectId: "zahra-work-experience-edition",
+            storageBucket: "zahra-work-experience-edition.firebasestorage.app",
+            messagingSenderId: "387461286315",
+            appId: "1:387461286315:web:158b2e2d1ec8324fb0eaee"
+        };
         // =========================================================================
 
         const getAppId = () => {
              // We rely on the automatic variable for the App ID path
             return window.__app_id || 'default-app-id';
-        };
-
-        // Construct a partial config object using ONLY the confirmed Project ID.
-        // This bypasses the failure to load the full config string.
-        const firebaseConfig = {
-            projectId: MANUAL_PROJECT_ID,
-            // A fake key is required by initializeApp, but the runtime uses the real key.
-            apiKey: 'fake-key-to-satisfy-requirements' 
         };
 
         // Global Firebase Instances
@@ -148,9 +147,9 @@
 
         const initializeFirebase = async () => {
             
-            // Project ID is now guaranteed to be present
-            if (!MANUAL_PROJECT_ID || MANUAL_PROJECT_ID.length < 5) {
-                displayMessage('Internal error: Project ID is missing from the code.', 'error');
+            // Check that the necessary config details are present
+            if (!firebaseConfig.projectId) {
+                displayMessage('Internal error: Project ID is missing from the hardcoded configuration.', 'error');
                 return;
             }
             
@@ -172,7 +171,7 @@
                 });
 
             } catch (error) {
-                // If this fails, the error is NOT a config issue, but a generic setup issue.
+                // Should now only catch generic setup errors
                 displayMessage(`**Firebase Initialization Failed:** Error: ${error.message}`, 'error');
                 console.error("Firebase Initialization Error:", error);
             }
@@ -198,7 +197,7 @@
         };
 
         const getContentDocRef = () => {
-             // Use the specific path for public, editable content
+             // Path: /artifacts/{appId}/public/data/editable_content/home-text
              return doc(db, 'artifacts', appId, 'public', 'data', 'editable_content', 'home-text');
         };
 

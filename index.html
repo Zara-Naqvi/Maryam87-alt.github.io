@@ -36,12 +36,11 @@
             align-items: center;
             min-height: 100vh;
             
-            /* MODIFIED: For Admin Button Positioning */
             position: relative; 
             overflow-x: hidden;
         }
         
-        /* NEW: Admin Login Button Styles */
+        /* NEW: Admin Login Button Styles (COLOR CHANGED TO GREY) */
         .admin-login-button {
             position: absolute; 
             top: 20px; 
@@ -51,7 +50,8 @@
             /* Button Styling */
             display: inline-block;
             padding: 8px 15px;
-            background-color: #dc3545; /* Primary contrasting color (Red) */
+            /* ** MODIFIED COLOR: Changed from red to grey ** */
+            background-color: #555555; 
             color: #ffffff;
             text-decoration: none;
             border-radius: 5px;
@@ -64,10 +64,12 @@
         }
 
         .admin-login-button:hover {
-            background-color: #c82333;
+            /* ** MODIFIED HOVER COLOR: A slightly lighter grey ** */
+            background-color: #666666; 
             transform: translateY(-1px);
         }
-        
+        /* **** END NEW BUTTON STYLES **** */
+
         .container {
             width: 90%;
             max-width: 800px;
@@ -136,6 +138,7 @@
             transform: translateX(20px);
         }
         
+        /* The play icon color remains red for the "playing" state for contrast/visual feedback */
         .play-button-container.playing .play-icon { fill: #dc3545; }
 
         .profile-pic {
